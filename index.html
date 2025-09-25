@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="TechFlow - Leading digital solutions provider specializing in custom web development, ERP systems, and innovative digital transformation services." />
+    <meta name="keywords" content="web development, ERP systems, digital solutions, custom websites, web applications, enterprise software" />
+    <meta name="author" content="TechFlow Digital Solutions" />
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="TechFlow - Digital Solutions & Web Development" />
+    <meta property="og:description" content="Transform your business with cutting-edge web development, ERP systems, and digital solutions." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://techflow.com" />
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="TechFlow - Digital Solutions & Web Development" />
+    <meta name="twitter:description" content="Transform your business with cutting-edge web development, ERP systems, and digital solutions." />
+    
+    <!-- Preload Poppins Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <title>TechFlow - Digital Solutions & Web Development</title>
+    
+    <style>
+      /* Font optimization */
+      * {
+        font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+      }
+      
+      /* Smooth scrolling */
+      html {
+        scroll-behavior: smooth;
+      }
+      
+      /* Loading animation */
+      .loading {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #0A2540 0%, #1a4a6e 100%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        transition: opacity 0.5s ease-out;
+      }
+      
+      .loading-spinner {
+        width: 50px;
+        height: 50px;
+        border: 3px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        border-top-color: #00CFFF;
+        animation: spin 1s ease-in-out infinite;
+      }
+      
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="loading" class="loading">
+      <div class="loading-spinner"></div>
+    </div>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    
+    <script>
+      // Hide loading screen when page is loaded
+      window.addEventListener('load', function() {
+        const loading = document.getElementById('loading');
+        if (loading) {
+          loading.style.opacity = '0';
+          setTimeout(() => {
+            loading.style.display = 'none';
+          }, 500);
+        }
+      });
+      
+      // Add smooth scroll behavior for older browsers
+      if (!('scrollBehavior' in document.documentElement.style)) {
+        const smoothScrollPolyfill = document.createElement('script');
+        smoothScrollPolyfill.src = 'https://cdn.jsdelivr.net/gh/iamdustan/smoothscroll@v2.0.0/dist/smoothscroll.min.js';
+        document.head.appendChild(smoothScrollPolyfill);
+      }
+    </script>
+  </body>
+</html>
