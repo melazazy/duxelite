@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import apiService from '../services/apiService';
-import type { PortfolioProject, Testimonial } from '../services/apiService';
+import type { PortfolioProject, Testimonial, Service, CaseStudy, BlogPost } from '../services/apiService';
 
 // Generic API hook
 export function useApi<T>(
@@ -71,6 +71,23 @@ export function useCaseStudies() {
 
 export function useTestimonials() {
   return useApi<Testimonial[]>(() => apiService.getTestimonials());
+}
+
+// Home page optimized data hooks
+export function usePortfolioHomePageData() {
+  return useApi<PortfolioProject[]>(() => apiService.getPortfolioHomePageData());
+}
+
+export function useServicesHomePageData() {
+  return useApi<Service[]>(() => apiService.getServicesHomePageData());
+}
+
+export function useCaseStudiesHomePageData() {
+  return useApi<CaseStudy[]>(() => apiService.getCaseStudiesHomePageData());
+}
+
+export function useBlogHomePageData() {
+  return useApi<BlogPost[]>(() => apiService.getBlogHomePageData());
 }
 
 // Form submission hook

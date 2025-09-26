@@ -12,8 +12,23 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        $services = \App\Models\Service::all();
-        return response()->json($services);
+        $services = \App\Models\Service::where('is_active', true)->get();
+        return response()->json([
+            'success' => true,
+            'data' => $services
+        ]);
+    }
+
+    /**
+     * Get optimized data for home page services section
+     */
+    public function homePageData()
+    {
+        $services = \App\Models\Service::getHomePageData(6);
+        return response()->json([
+            'success' => true,
+            'data' => $services
+        ]);
     }
 
     /**
@@ -39,10 +54,13 @@ class ServiceController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $slug)
     {
-        $service = \App\Models\Service::findOrFail($id);
-        return response()->json($service);
+        $service = \App\Models\Service::where('slug', $slug)->firstOrFail();
+        return response()->json([
+            'success' => true,
+            'data' => $service->getFullDetails()
+        ]);
     }
 
     /**
@@ -70,13 +88,16 @@ class ServiceController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified resource from storage (soft delete).
      */
     public function destroy(string $id)
     {
         $service = \App\Models\Service::findOrFail($id);
-        $service->delete();
+        $service->delete(); // This will soft delete due to SoftDeletes trait
         
-        return response()->json(null, 204);
+        return response()->json([
+            'success' => true,
+            'message' => 'Service deleted successfully'
+        ]);
     }
 }

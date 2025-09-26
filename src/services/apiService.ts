@@ -93,10 +93,20 @@ class ApiService {
     return this.get(`/blog/posts/${slug}`);
   }
 
+  async getBlogHomePageData(): Promise<BlogPost[]> {
+    const response = await this.get<{ success: boolean; data: BlogPost[] }>('/blog/homepage');
+    return response.data;
+  }
+
   // Portfolio methods
   async getPortfolioProjects(category?: string): Promise<PortfolioProject[]> {
     const queryString = category ? `?category=${category}` : '';
     return this.get(`/projects${queryString}`);
+  }
+
+  async getPortfolioHomePageData(): Promise<PortfolioProject[]> {
+    const response = await this.get<{ success: boolean; data: PortfolioProject[] }>('/portfolio/homepage');
+    return response.data;
   }
 
   // Services methods
@@ -104,9 +114,19 @@ class ApiService {
     return this.get('/services');
   }
 
+  async getServicesHomePageData(): Promise<Service[]> {
+    const response = await this.get<{ success: boolean; data: Service[] }>('/services/homepage');
+    return response.data;
+  }
+
   // Case studies methods
   async getCaseStudies(): Promise<CaseStudy[]> {
     return this.get('/case-studies');
+  }
+
+  async getCaseStudiesHomePageData(): Promise<CaseStudy[]> {
+    const response = await this.get<{ success: boolean; data: CaseStudy[] }>('/case-studies/homepage');
+    return response.data;
   }
 
   // Testimonials methods
@@ -159,18 +179,24 @@ export interface BlogPost {
   title: string;
   slug: string;
   excerpt: string;
-  content: string;
+  content?: string;
   featured_image: string;
-  author: string;
+  author: {
+    name: string;
+  };
   published_at: string;
   read_time: string;
-  category: string;
-  tags: string[];
+  category: {
+    name: string;
+    slug: string;
+  };
+  tags?: string[];
 }
 
 export interface PortfolioProject {
   id: number;
   title: string;
+  slug: string;
   category: {
     id: number;
     name: string;
@@ -187,26 +213,34 @@ export interface PortfolioProject {
 export interface Service {
   id: number;
   title: string;
+  slug: string;
   description: string;
+  short_description?: string;
   icon: string;
-  features: string[];
-  technologies: string[];
+  features?: string[];
+  technologies?: string[];
 }
 
 export interface CaseStudy {
   id: number;
   title: string;
+  slug: string;
+  description: string;
   client: string;
-  industry: string;
-  challenge: string;
-  solution: string;
-  results: Array<{
+  published_at: string;
+  project?: {
+    title: string;
+    slug: string;
+  };
+  challenge?: string;
+  solution?: string;
+  results?: Array<{
     metric: string;
     description: string;
   }>;
-  technologies: string[];
-  timeline: string;
-  image: string;
+  technologies?: string[];
+  timeline?: string;
+  image?: string;
 }
 
 export interface Testimonial {

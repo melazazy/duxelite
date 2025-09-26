@@ -13,11 +13,15 @@ use Illuminate\Support\Facades\Route;
 // Public routes
 Route::get('/portfolio', [PortfolioController::class, 'index']);
 Route::get('/portfolio/featured', [PortfolioController::class, 'featured']);
+Route::get('/portfolio/homepage', [PortfolioController::class, 'homePageData']);
 Route::get('/portfolio/category/{categorySlug}', [PortfolioController::class, 'byCategory']);
 Route::get('/portfolio/{slug}', [PortfolioController::class, 'show']);
 
 // Add specific routes for frontend API calls
 Route::get('/blog/posts', [BlogController::class, 'index']);
+Route::get('/blog/homepage', [BlogController::class, 'homePageData']);
+Route::get('/services/homepage', [ServiceController::class, 'homePageData']);
+Route::get('/case-studies/homepage', [CaseStudyController::class, 'homePageData']);
 
 // API Resource Routes
 Route::apiResource('services', ServiceController::class);

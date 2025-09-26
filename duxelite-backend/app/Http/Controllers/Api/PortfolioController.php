@@ -16,12 +16,24 @@ class PortfolioController extends Controller
     {
         $categories = ProjectCategory::with(['projects' => function($query) {
             $query->where('is_featured', true)
-                  ->orderBy('project_date', 'desc');
+                  ->orderBy('created_at', 'desc');
         }])->where('is_active', true)
           ->orderBy('order')
           ->get();
 
         return response()->json($categories);
+    }
+
+    /**
+     * Get optimized data for home page portfolio section
+     */
+    public function homePageData()
+    {
+        $projects = Project::getHomePageData(6);
+        return response()->json([
+            'success' => true,
+            'data' => $projects
+        ]);
     }
 
     /**
@@ -33,7 +45,10 @@ class PortfolioController extends Controller
             ->with('category')
             ->firstOrFail();
 
-        return response()->json($project);
+        return response()->json([
+            'success' => true,
+            'data' => $project->getFullDetails()
+        ]);
     }
 
     /**
@@ -43,11 +58,14 @@ class PortfolioController extends Controller
     {
         $projects = Project::where('is_featured', true)
             ->with('category')
-            ->orderBy('project_date', 'desc')
+            ->orderBy('created_at', 'desc')
             ->limit(6)
             ->get();
 
-        return response()->json($projects);
+        return response()->json([
+            'success' => true,
+            'data' => $projects
+        ]);
     }
 
     /**
@@ -60,12 +78,15 @@ class PortfolioController extends Controller
             ->firstOrFail();
 
         $projects = Project::where('category_id', $category->id)
-            ->orderBy('project_date', 'desc')
+            ->orderBy('created_at', 'desc')
             ->get();
 
         return response()->json([
-            'category' => $category,
-            'projects' => $projects
+            'success' => true,
+            'data' => [
+                'category' => $category,
+                'projects' => $projects
+            ]
         ]);
     }
 }

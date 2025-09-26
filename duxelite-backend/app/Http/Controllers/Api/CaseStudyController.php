@@ -17,8 +17,27 @@ class CaseStudyController extends Controller
      */
     public function index()
     {
-        $caseStudies = CaseStudy::with('project')->latest()->get();
-        return response()->json($caseStudies);
+        $caseStudies = CaseStudy::with('project')
+            ->whereNotNull('published_at')
+            ->where('published_at', '<=', now())
+            ->latest('published_at')
+            ->get();
+        return response()->json([
+            'success' => true,
+            'data' => $caseStudies
+        ]);
+    }
+
+    /**
+     * Get optimized data for home page case studies section
+     */
+    public function homePageData()
+    {
+        $caseStudies = CaseStudy::getHomePageData(3);
+        return response()->json([
+            'success' => true,
+            'data' => $caseStudies
+        ]);
     }
 
     /**
@@ -53,10 +72,18 @@ class CaseStudyController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $slug)
     {
-        $caseStudy = CaseStudy::with('project')->findOrFail($id);
-        return response()->json($caseStudy);
+        $caseStudy = CaseStudy::where('slug', $slug)
+            ->whereNotNull('published_at')
+            ->where('published_at', '<=', now())
+            ->with('project')
+            ->firstOrFail();
+        
+        return response()->json([
+            'success' => true,
+            'data' => $caseStudy->getFullDetails()
+        ]);
     }
 
     /**
@@ -91,13 +118,16 @@ class CaseStudyController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified resource from storage (soft delete).
      */
     public function destroy(string $id)
     {
         $caseStudy = CaseStudy::findOrFail($id);
-        $caseStudy->delete();
+        $caseStudy->delete(); // This will soft delete due to SoftDeletes trait
         
-        return response()->json(null, 204);
+        return response()->json([
+            'success' => true,
+            'message' => 'Case study deleted successfully'
+        ]);
     }
 }

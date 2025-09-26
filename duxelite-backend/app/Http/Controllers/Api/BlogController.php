@@ -18,8 +18,28 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $posts = BlogPost::with(['category', 'author'])->latest()->get();
-        return response()->json($posts);
+        $posts = BlogPost::with(['category', 'author'])
+            ->where('is_published', true)
+            ->whereNotNull('published_at')
+            ->where('published_at', '<=', now())
+            ->latest('published_at')
+            ->get();
+        return response()->json([
+            'success' => true,
+            'data' => $posts
+        ]);
+    }
+
+    /**
+     * Get optimized data for home page blog section
+     */
+    public function homePageData()
+    {
+        $posts = BlogPost::getHomePageData(3);
+        return response()->json([
+            'success' => true,
+            'data' => $posts
+        ]);
     }
 
     /**
@@ -70,10 +90,22 @@ class BlogController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $slug)
     {
-        $post = BlogPost::with(['category', 'author'])->findOrFail($id);
-        return response()->json($post);
+        $post = BlogPost::where('slug', $slug)
+            ->where('is_published', true)
+            ->whereNotNull('published_at')
+            ->where('published_at', '<=', now())
+            ->with(['category', 'author', 'tags'])
+            ->firstOrFail();
+        
+        // Increment view count
+        $post->increment('views');
+        
+        return response()->json([
+            'success' => true,
+            'data' => $post->getFullDetails()
+        ]);
     }
 
     /**
@@ -129,19 +161,18 @@ class BlogController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified resource from storage (soft delete).
      */
     public function destroy(string $id)
     {
         $post = BlogPost::findOrFail($id);
         
-        // Delete associated image if exists
-        if ($post->featured_image) {
-            Storage::disk('public')->delete($post->featured_image);
-        }
+        // Note: We don't delete the image on soft delete, only on force delete
+        $post->delete(); // This will soft delete due to SoftDeletes trait
         
-        $post->delete();
-        
-        return response()->json(null, 204);
+        return response()->json([
+            'success' => true,
+            'message' => 'Blog post deleted successfully'
+        ]);
     }
 }

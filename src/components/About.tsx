@@ -49,8 +49,8 @@ const About: React.FC = () => {
             </span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            We're a team of passionate developers, designers, and strategists dedicated to creating 
-            digital solutions that empower businesses to thrive in the modern world.
+            We create powerful digital solutions that transform businesses. From custom web development 
+            to enterprise ERP systems, we deliver results that drive growth and success.
           </p>
           <div className="mt-8">
             <Link to="/about" className="inline-flex items-center bg-gradient-to-r from-[#0A2540] to-[#00CFFF] text-white px-8 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105">
@@ -66,9 +66,8 @@ const About: React.FC = () => {
             <Target className="w-12 h-12 text-[#00CFFF] mb-6" />
             <h3 className="text-2xl font-bold mb-4">Our Mission</h3>
             <p className="text-white/80 leading-relaxed">
-              To empower businesses through innovative digital solutions, creating websites, 
-              web systems, and ERP platforms that drive growth, efficiency, and competitive advantage 
-              in the digital marketplace.
+              To empower businesses through cutting-edge digital solutions that drive growth, 
+              efficiency, and competitive advantage in today's digital marketplace.
             </p>
           </div>
           
@@ -76,9 +75,8 @@ const About: React.FC = () => {
             <Eye className="w-12 h-12 text-[#0A2540] mb-6" />
             <h3 className="text-2xl font-bold text-[#0A2540] mb-4">Our Vision</h3>
             <p className="text-gray-700 leading-relaxed">
-              To be the leading digital transformation partner, recognized for our innovative 
-              solutions, exceptional service, and commitment to helping businesses achieve 
-              their full potential in the digital age.
+              To be the leading digital transformation partner, recognized for innovative 
+              solutions and exceptional service that helps businesses achieve their full potential.
             </p>
           </div>
         </div>
