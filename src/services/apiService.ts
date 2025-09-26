@@ -96,7 +96,7 @@ class ApiService {
   // Portfolio methods
   async getPortfolioProjects(category?: string): Promise<PortfolioProject[]> {
     const queryString = category ? `?category=${category}` : '';
-    return this.get(`/portfolio/projects${queryString}`);
+    return this.get(`/projects${queryString}`);
   }
 
   // Services methods
@@ -107,6 +107,11 @@ class ApiService {
   // Case studies methods
   async getCaseStudies(): Promise<CaseStudy[]> {
     return this.get('/case-studies');
+  }
+
+  // Testimonials methods
+  async getTestimonials(): Promise<Testimonial[]> {
+    return this.get('/testimonials');
   }
 }
 
@@ -166,7 +171,11 @@ export interface BlogPost {
 export interface PortfolioProject {
   id: number;
   title: string;
-  category: string;
+  category: {
+    id: number;
+    name: string;
+    slug: string;
+  };
   description: string;
   image: string;
   technologies: string[];
@@ -198,6 +207,14 @@ export interface CaseStudy {
   technologies: string[];
   timeline: string;
   image: string;
+}
+
+export interface Testimonial {
+  id: number;
+  name: string;
+  title: string;
+  avatar: string;
+  quote: string;
 }
 
 export default new ApiService();

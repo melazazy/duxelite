@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Play, CheckCircle } from 'lucide-react';
+import { ArrowRight, CheckCircle } from 'lucide-react';
 
 const Hero: React.FC = () => {
   const stats = [
@@ -64,13 +64,12 @@ const Hero: React.FC = () => {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
               <button className="group bg-gradient-to-r from-[#00CFFF] to-[#0A2540] text-white px-8 py-4 rounded-full font-semibold hover:shadow-2xl transition-all duration-300 transform hover:scale-105 flex items-center justify-center">
-                Start Your Project
+                Get a Quote
                 <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
               </button>
               
               <button className="group bg-white/10 text-white px-8 py-4 rounded-full font-semibold backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all duration-300 flex items-center justify-center">
-                <Play className="w-5 h-5 mr-2" />
-                Watch Demo
+                View Our Work
               </button>
             </div>
 

@@ -1,8 +1,13 @@
 import React from 'react';
-import { TrendingUp, Users, Clock, Award, ArrowRight, CheckCircle } from 'lucide-react';
+import { TrendingUp, Clock, Award, ArrowRight } from 'lucide-react';
+import { useCaseStudies } from '../hooks/useApi';
+import type { CaseStudy } from '../services/apiService';
 
 const CaseStudies: React.FC = () => {
-  const caseStudies = [
+  const { data: apiCaseStudies, loading, error } = useCaseStudies();
+
+  // Fallback data in case API is not available
+  const fallbackCaseStudies: CaseStudy[] = [
     {
       id: 1,
       title: 'Global Manufacturing ERP Implementation',
@@ -56,26 +61,23 @@ const CaseStudies: React.FC = () => {
     }
   ];
 
-  const testimonials = [
-    {
-      name: 'Sarah Johnson',
-      role: 'CTO, ManufactureMax Industries',
-      content: 'TechFlow transformed our entire operation. The ERP system they built has streamlined every aspect of our business.',
-      rating: 5
-    },
-    {
-      name: 'Dr. Michael Chen',
-      role: 'Director, MediCare Plus Network',
-      content: 'Outstanding work on our healthcare platform. The telemedicine features have revolutionized how we serve patients.',
-      rating: 5
-    },
-    {
-      name: 'Lisa Rodriguez',
-      role: 'CEO, TechGear Online',
-      content: 'The scalability and performance improvements exceeded our expectations. Sales have tripled since the launch.',
-      rating: 5
-    }
-  ];
+  // Use API data if available, otherwise use fallback data
+  const caseStudies: CaseStudy[] = (apiCaseStudies && apiCaseStudies.length > 0) ? apiCaseStudies : fallbackCaseStudies;
+
+  if (loading) {
+    return (
+      <section id="case-studies" className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <p className="text-lg text-gray-600">Loading case studies...</p>
+        </div>
+      </section>
+    );
+  }
+
+  if (error) {
+    console.error("Error fetching case studies:", error);
+    // The component will proceed to render with fallback data, so no specific UI for error is needed here.
+  }
 
   return (
     <section id="case-studies" className="py-20 bg-gray-50">
@@ -200,29 +202,6 @@ const CaseStudies: React.FC = () => {
               </div>
             </div>
           ))}
-        </div>
-
-        {/* Testimonials */}
-        <div className="mt-20">
-          <h3 className="text-3xl font-bold text-[#0A2540] text-center mb-12">What Our Clients Say</h3>
-          <div className="grid md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-white p-8 rounded-3xl shadow-lg">
-                <div className="flex mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <div key={i} className="w-5 h-5 text-yellow-400">★</div>
-                  ))}
-                </div>
-                <p className="text-gray-600 mb-6 leading-relaxed italic">
-                  "{testimonial.content}"
-                </p>
-                <div>
-                  <div className="font-semibold text-[#0A2540]">{testimonial.name}</div>
-                  <div className="text-sm text-gray-500">{testimonial.role}</div>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
 
         {/* Stats */}

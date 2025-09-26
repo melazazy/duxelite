@@ -29,6 +29,23 @@ class Project extends Model
         'is_featured' => 'boolean',
         'year' => 'integer'
     ];
+    
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = ['category_slug'];
+    
+    /**
+     * Get the category's slug.
+     *
+     * @return string|null
+     */
+    public function getCategorySlugAttribute()
+    {
+        return $this->category ? $this->category->slug : null;
+    }
 
     /**
      * Get the category that owns the project.

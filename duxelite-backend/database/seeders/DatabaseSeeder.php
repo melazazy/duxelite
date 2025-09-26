@@ -40,6 +40,11 @@ class DatabaseSeeder extends Seeder
         }
         // Otherwise, we'll just use the first user (ID 1) as admin
 
+        // Check if the database has already been seeded
+        if (Service::count() > 0) {
+            return;
+        }
+
         // Create sample services
         $services = [
             [
@@ -163,7 +168,8 @@ class DatabaseSeeder extends Seeder
                 'description' => 'A full-featured e-commerce platform with inventory management and payment processing.',
                 'client' => 'Fashion Retailer Inc.',
                 'status' => 'completed',
-                'technologies' => ['Laravel', 'Vue.js', 'MySQL', 'Tailwind CSS', 'Stripe']
+                'technologies' => ['Laravel', 'Vue.js', 'MySQL', 'Tailwind CSS', 'Stripe'],
+                'image' => url('storage/projects/ecommerce.jpg')
             ],
             [
                 'category_id' => 1,
@@ -172,7 +178,8 @@ class DatabaseSeeder extends Seeder
                 'description' => 'A modern corporate website with blog and contact management system.',
                 'client' => 'Tech Solutions Ltd.',
                 'status' => 'completed',
-                'technologies' => ['WordPress', 'PHP', 'JavaScript', 'Sass']
+                'technologies' => ['WordPress', 'PHP', 'JavaScript', 'Sass'],
+                'image' => url('storage/projects/corporate.jpg')
             ],
             [
                 'category_id' => 2,
@@ -181,7 +188,8 @@ class DatabaseSeeder extends Seeder
                 'description' => 'A fitness tracking application with workout plans and progress tracking.',
                 'client' => 'FitLife',
                 'status' => 'in-progress',
-                'technologies' => ['React Native', 'Node.js', 'MongoDB', 'Firebase']
+                'technologies' => ['React Native', 'Node.js', 'MongoDB', 'Firebase'],
+                'image' => url('storage/projects/fitness-app.jpg')
             ]
         ];
 
@@ -223,7 +231,7 @@ class DatabaseSeeder extends Seeder
                 'title' => 'Getting Started with Laravel 10',
                 'slug' => 'getting-started-with-laravel-10',
                 'content' => '<p>Laravel 10 introduces several new features and improvements. In this article, we\'ll explore how to get started with the latest version of Laravel.</p>',
-                'featured_image' => 'posts/laravel-10.jpg',
+                'featured_image' => url('storage/posts/laravel-10.jpg'),
                 'published_at' => now()->subDays(5),
                 'read_time' => '5 min read',
                 'is_published' => true,
@@ -235,7 +243,7 @@ class DatabaseSeeder extends Seeder
                 'title' => 'The Future of Web Development',
                 'slug' => 'future-of-web-development',
                 'content' => '<p>Web development is constantly evolving. Let\'s take a look at the latest trends and technologies shaping the future of the web.</p>',
-                'featured_image' => 'posts/web-dev-future.jpg',
+                'featured_image' => url('storage/posts/web-dev-future.jpg'),
                 'published_at' => now()->subDays(3),
                 'read_time' => '7 min read',
                 'is_published' => true,

@@ -16,6 +16,9 @@ Route::get('/portfolio/featured', [PortfolioController::class, 'featured']);
 Route::get('/portfolio/category/{categorySlug}', [PortfolioController::class, 'byCategory']);
 Route::get('/portfolio/{slug}', [PortfolioController::class, 'show']);
 
+// Add specific routes for frontend API calls
+Route::get('/blog/posts', [BlogController::class, 'index']);
+
 // API Resource Routes
 Route::apiResource('services', ServiceController::class);
 Route::apiResource('projects', ProjectController::class);

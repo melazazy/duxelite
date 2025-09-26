@@ -15,9 +15,18 @@ class ProjectController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $projects = Project::with('category')->latest()->get();
+        $query = Project::with('category');
+
+        if ($request->has('category')) {
+            $query->whereHas('category', function($q) use ($request) {
+                $q->where('slug', $request->category);
+            });
+        }
+
+        $projects = $query->latest()->get();
+
         return response()->json($projects);
     }
 

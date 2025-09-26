@@ -1,5 +1,6 @@
 import React from 'react';
-import { Target, Eye, Award, Users, Lightbulb, Shield } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Target, Eye, Award, Users, Lightbulb, Shield, ArrowRight } from 'lucide-react';
 
 const About: React.FC = () => {
   const values = [
@@ -51,6 +52,12 @@ const About: React.FC = () => {
             We're a team of passionate developers, designers, and strategists dedicated to creating 
             digital solutions that empower businesses to thrive in the modern world.
           </p>
+          <div className="mt-8">
+            <Link to="/about" className="inline-flex items-center bg-gradient-to-r from-[#0A2540] to-[#00CFFF] text-white px-8 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105">
+              Learn More About Us
+              <ArrowRight className="w-5 h-5 ml-2" />
+            </Link>
+          </div>
         </div>
 
         {/* Mission & Vision */}

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import apiService from '../services/apiService';
-import type { PortfolioProject } from '../services/apiService';
+import type { PortfolioProject, Testimonial } from '../services/apiService';
 
 // Generic API hook
 export function useApi<T>(
@@ -67,6 +67,10 @@ export function useServices() {
 
 export function useCaseStudies() {
   return useApi(() => apiService.getCaseStudies());
+}
+
+export function useTestimonials() {
+  return useApi<Testimonial[]>(() => apiService.getTestimonials());
 }
 
 // Form submission hook

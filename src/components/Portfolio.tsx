@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ExternalLink, Github, Eye, Filter } from 'lucide-react';
+import { ExternalLink, Github, Eye } from 'lucide-react';
 import { usePortfolioProjects } from '../hooks/useApi';
 import type { PortfolioProject } from '../services/apiService';
 
@@ -12,87 +12,86 @@ const Portfolio: React.FC = () => {
 
   const categories = [
     { id: 'all', name: 'All Projects' },
-    { id: 'web', name: 'Web Development' },
-    { id: 'erp', name: 'ERP Systems' },
-    { id: 'mobile', name: 'Mobile Apps' },
-    { id: 'ecommerce', name: 'E-commerce' }
+    { id: 'web-development', name: 'Web Development' },
+    { id: 'erp-systems', name: 'ERP Systems' },
+    { id: 'mobile-development', name: 'Mobile Development' },
+    { id: 'e-commerce', name: 'E-commerce' }
   ];
-
+  
   // Fallback data in case API is not available
   const fallbackProjects: PortfolioProject[] = [
     {
       id: 1,
-      title: 'TechCorp Enterprise Platform',
-      category: 'erp',
-      image: 'https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg',
-      description: 'Comprehensive ERP system for large enterprise with inventory, HR, and financial modules.',
-      technologies: ['Laravel', 'Vue.js', 'MySQL', 'Redis'],
-      features: ['Real-time Analytics', 'Multi-language Support', 'Advanced Reporting'],
+      title: 'E-commerce Platform',
+      category: { id: 1, name: 'Web Development', slug: 'web-development' },
+      description: 'A full-featured e-commerce platform with inventory management and payment processing.',
+      image: '/images/portfolio/ecommerce.jpg',
+      technologies: ['React', 'Node.js', 'MongoDB', 'Stripe'],
+      features: ['Product Catalog', 'Shopping Cart', 'User Authentication', 'Payment Processing'],
       live_url: '#',
       github_url: '#'
     },
     {
       id: 2,
-      title: 'E-Commerce Marketplace',
-      category: 'ecommerce',
-      image: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg',
-      description: 'Modern e-commerce platform with advanced search, payment integration, and vendor management.',
-      technologies: ['React', 'Node.js', 'MongoDB', 'Stripe'],
-      features: ['Multi-vendor Support', 'Payment Gateway', 'Order Tracking'],
+      title: 'Mobile Banking App',
+      category: { id: 2, name: 'Mobile Apps', slug: 'mobile-apps' },
+      description: 'A secure mobile banking application for managing accounts and transactions on the go.',
+      image: '/images/portfolio/banking-app.jpg',
+      technologies: ['React Native', 'Node.js', 'PostgreSQL'],
+      features: ['Account Management', 'Fund Transfers', 'Bill Payments', 'Transaction History'],
       live_url: '#',
       github_url: '#'
     },
     {
       id: 3,
-      title: 'Healthcare Management System',
-      category: 'web',
-      image: 'https://images.pexels.com/photos/3184306/pexels-photo-3184306.jpeg',
-      description: 'Complete healthcare management solution with patient records and appointment scheduling.',
-      technologies: ['React', 'Express.js', 'PostgreSQL', 'WebSocket'],
-      features: ['Patient Management', 'Appointment Booking', 'Telemedicine'],
+      title: 'Enterprise Dashboard',
+      category: { id: 1, name: 'Web Development', slug: 'web-development' },
+      description: 'A comprehensive dashboard for enterprise analytics and data visualization.',
+      image: '/images/portfolio/dashboard.jpg',
+      technologies: ['Vue.js', 'D3.js', 'Laravel', 'MySQL'],
+      features: ['Data Visualization', 'User Management', 'Custom Reports', 'Real-time Updates'],
       live_url: '#',
       github_url: '#'
     },
     {
       id: 4,
-      title: 'Financial Services Portal',
-      category: 'web',
-      image: 'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg',
-      description: 'Secure financial services platform with real-time transactions and reporting.',
-      technologies: ['Next.js', 'TypeScript', 'Prisma', 'PostgreSQL'],
-      features: ['Real-time Transactions', 'Security Compliance', 'Advanced Analytics'],
+      title: 'Fitness Tracker',
+      category: { id: 2, name: 'Mobile Apps', slug: 'mobile-apps' },
+      description: 'A fitness tracking application with workout plans and progress monitoring.',
+      image: '/images/portfolio/fitness-app.jpg',
+      technologies: ['Flutter', 'Firebase', 'Node.js'],
+      features: ['Workout Plans', 'Progress Tracking', 'Meal Planner', 'Social Sharing'],
       live_url: '#',
       github_url: '#'
     },
     {
       id: 5,
-      title: 'Mobile Banking App',
-      category: 'mobile',
-      image: 'https://images.pexels.com/photos/3184287/pexels-photo-3184287.jpeg',
-      description: 'Cross-platform mobile banking application with biometric authentication.',
-      technologies: ['React Native', 'Firebase', 'Node.js', 'MongoDB'],
-      features: ['Biometric Auth', 'QR Payments', 'Transaction History'],
+      title: 'Restaurant Website',
+      category: { id: 1, name: 'Web Development', slug: 'web-development' },
+      description: 'A responsive website for a restaurant with online ordering and table reservation.',
+      image: '/images/portfolio/restaurant.jpg',
+      technologies: ['Next.js', 'Tailwind CSS', 'Strapi', 'Stripe'],
+      features: ['Online Menu', 'Table Reservation', 'Online ordering', 'Admin Dashboard'],
       live_url: '#',
       github_url: '#'
     },
     {
       id: 6,
-      title: 'Restaurant Management Suite',
-      category: 'erp',
-      image: 'https://images.pexels.com/photos/3184298/pexels-photo-3184298.jpeg',
-      description: 'Complete restaurant management system with POS, inventory, and staff management.',
-      technologies: ['Vue.js', 'Laravel', 'MySQL', 'WebSocket'],
+      title: 'Retail POS System',
+      category: { id: 3, name: 'ERP Systems', slug: 'erp-systems' },
+      description: 'A point of sale system with inventory management for retail businesses.',
+      image: '/images/portfolio/pos-system.jpg',
+      technologies: ['React', 'Electron', 'Node.js', 'SQLite'],
       features: ['POS System', 'Inventory Control', 'Staff Scheduling'],
       live_url: '#',
       github_url: '#'
     }
   ];
-  
   // Use API data if available, otherwise use fallback data
   const projects: PortfolioProject[] = Array.isArray(apiProjects) ? apiProjects : fallbackProjects;
   const filteredProjects = activeFilter === 'all' 
     ? projects 
-    : projects.filter((project) => project.category === activeFilter);
+    : projects.filter((project) => project.category?.slug === activeFilter);
 
   return (
     <section id="portfolio" className="py-20 bg-white">
@@ -173,7 +172,7 @@ const Portfolio: React.FC = () => {
                       </a>
                     </div>
                     <div className="px-3 py-1 bg-[#00CFFF] text-white text-xs font-medium rounded-full">
-                      {categories.find(cat => cat.id === project.category)?.name}
+                      {categories.find(cat => cat.id === project.category.slug)?.name}
                     </div>
                   </div>
                 </div>

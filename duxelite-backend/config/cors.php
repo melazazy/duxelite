@@ -15,18 +15,19 @@ return [
     |
     */
 
-'paths' => ['api/*', 'sanctum/csrf-cookie'],
+    'paths' => ['api/*', 'sanctum/csrf-cookie'],
 
-'allowed_methods' => ['*'],
+    'allowed_methods' => ['*'],
 
-'allowed_origins' => [
-    'http://localhost:5173', // Vite React
-    'http://localhost:3000', // Next.js (لو استخدمته مستقبلاً)
-],
+    'allowed_origins' => [
+        'http://localhost:5173', // Vite React Default Port
+        'http://localhost:5174', // Vite React Fallback Port
+        'http://localhost:3000', // Common port for other JS frameworks
+    ],
 
-'allowed_headers' => ['*'],
+    'allowed_headers' => ['*'],
 
-'supports_credentials' => true,
+    'supports_credentials' => true,
 
 
 ];
