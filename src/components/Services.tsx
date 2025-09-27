@@ -1,235 +1,145 @@
-import React, { useState } from 'react';
-import { Code, Database, Smartphone, Search, Shield, Headphones, Globe, BarChart3, Settings, ArrowRight } from 'lucide-react';
-import { useServicesHomePageData } from '../hooks/useApi';
+import React from 'react';
+import { useServices } from '../hooks/useApi';
 import { Link } from 'react-router-dom';
+import { Code, Database, Smartphone, Layers, Settings } from 'lucide-react';
+
+// Define the service interface for type safety
+interface ServicePreview {
+  id: number | string;
+  title: string;
+  slug: string;
+  short_description?: string;
+  description?: string;
+  icon?: string;
+}
+
+// Map service icons
+const getServiceIcon = (iconName: string = '') => {
+  const iconMap: { [key: string]: JSX.Element } = {
+    'Code': <Code className="w-6 h-6" />,
+    'Database': <Database className="w-6 h-6" />,
+    'Smartphone': <Smartphone className="w-6 h-6" />,
+    'Layers': <Layers className="w-6 h-6" />,
+  };
+  return iconMap[iconName] || <Settings className="w-6 h-6" />;
+};
 
 const Services: React.FC = () => {
-  const [activeService, setActiveService] = useState(0);
-  const { data: apiServices, loading, error } = useServicesHomePageData();
-
-  // Fallback services data
-  const fallbackServices = [
+  // Use the useServices hook to fetch services data with proper null check
+  const { data: services = [], loading, error } = useServices();
+  
+  // Fallback services in case the API call fails or is loading
+  const fallbackServices: ServicePreview[] = [
     {
       id: 1,
-      title: 'Custom Web Development',
-      slug: 'custom-web-development',
-      description: 'Tailored websites built with cutting-edge technologies',
-      short_description: 'Modern web solutions',
+      title: 'Web Development',
+      slug: 'web-development',
+      short_description: 'Custom websites and web applications built with modern technologies.',
       icon: 'Code'
     },
     {
       id: 2,
-      title: 'ERP System Solutions',
-      slug: 'erp-system-solutions',
-      description: 'Comprehensive enterprise resource planning systems',
-      short_description: 'Complete business solutions',
+      title: 'ERP Solutions',
+      slug: 'erp-solutions',
+      short_description: 'Comprehensive business management solutions for your operations.',
       icon: 'Database'
     },
     {
       id: 3,
-      title: 'Mobile-First Design',
-      slug: 'mobile-first-design',
-      description: 'Responsive designs optimized for all devices',
-      short_description: 'Cross-platform excellence',
+      title: 'Mobile Apps',
+      slug: 'mobile-apps',
+      short_description: 'Responsive and intuitive mobile applications.',
       icon: 'Smartphone'
     },
     {
       id: 4,
-      title: 'SEO & Digital Marketing',
-      slug: 'seo-digital-marketing',
-      description: 'Boost your online visibility and rankings',
-      short_description: 'Digital growth strategies',
-      icon: 'Search'
-    },
-    {
-      id: 5,
-      title: 'Security & Maintenance',
-      slug: 'security-maintenance',
-      description: 'Keep your systems secure and up-to-date',
-      short_description: 'Ongoing protection',
-      icon: 'Shield'
-    },
-    {
-      id: 6,
-      title: '24/7 Technical Support',
-      slug: 'technical-support',
-      description: 'Round-the-clock support for your peace of mind',
-      short_description: 'Always available help',
-      icon: 'Headphones'
+      title: 'Cloud Services',
+      slug: 'cloud-services',
+      short_description: 'Scalable cloud solutions for your business needs.',
+      icon: 'Layers'
     }
   ];
 
-  const services = apiServices && apiServices.length > 0 ? apiServices : fallbackServices;
+  // Determine which services to display
+  const servicesToDisplay = services && services.length > 0 ? services.slice(0, 4) : fallbackServices;
 
-  const getIconComponent = (iconName: string) => {
-    const iconMap: { [key: string]: React.ReactNode } = {
-      'Code': <Code className="w-8 h-8" />,
-      'Database': <Database className="w-8 h-8" />,
-      'Smartphone': <Smartphone className="w-8 h-8" />,
-      'Search': <Search className="w-8 h-8" />,
-      'Shield': <Shield className="w-8 h-8" />,
-      'Headphones': <Headphones className="w-8 h-8" />
-    };
-    return iconMap[iconName] || <Settings className="w-8 h-8" />;
+  if (error) {
+    console.error('Error loading services:', error);
+  }
+
+  // Helper function to get service description
+  const getServiceDescription = (service: ServicePreview) => {
+    if (service.short_description) return service.short_description;
+    if (service.description) return service.description.substring(0, 100) + '...';
+    return `Learn more about our ${service.title.toLowerCase()} services.`;
   };
 
-  const processSteps = [
-    { icon: <Globe className="w-6 h-6" />, title: 'Discovery', desc: 'Understanding your business needs and goals' },
-    { icon: <BarChart3 className="w-6 h-6" />, title: 'Planning', desc: 'Creating detailed project roadmap and strategy' },
-    { icon: <Code className="w-6 h-6" />, title: 'Development', desc: 'Building your solution with best practices' },
-    { icon: <Settings className="w-6 h-6" />, title: 'Launch', desc: 'Deploying and optimizing your solution' }
-  ];
-
   return (
-    <section id="services" className="py-20 bg-gray-50">
+    <section id="services" className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center px-4 py-2 bg-[#00CFFF]/10 rounded-full text-[#0A2540] text-sm font-medium mb-6">
-            <Settings className="w-4 h-4 mr-2" />
-            Our Services
-          </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-[#0A2540] mb-6">
-            Comprehensive Digital
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#0A2540] to-[#00CFFF]">
-              Solutions
-            </span>
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            Our Core Services
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            From custom web development to enterprise ERP systems, we provide end-to-end 
-            digital solutions tailored to your business needs.
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Expert solutions designed to drive your business forward in the digital landscape.
           </p>
         </div>
 
-        {/* Services Grid */}
         {loading ? (
-          <div className="text-center py-12">
-            <div className="w-8 h-8 border-2 border-[#00CFFF]/30 border-t-[#00CFFF] rounded-full animate-spin mx-auto mb-4"></div>
-            <p className="text-gray-600">Loading services...</p>
-          </div>
-        ) : error ? (
-          <div className="text-center py-12">
-            <p className="text-red-600">Error loading services: {error}</p>
-          </div>
-        ) : (
-        <div className="grid lg:grid-cols-3 gap-8 mb-20">
-          {services.map((service, index) => (
-            <div
-              key={service.id || index}
-              className={`group bg-white p-8 rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer border-2 ${
-                activeService === index ? 'border-[#00CFFF]' : 'border-transparent hover:border-[#00CFFF]/30'
-              }`}
-              onClick={() => setActiveService(index)}
-            >
-              <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 transition-all duration-300 ${
-                activeService === index 
-                  ? 'bg-gradient-to-r from-[#0A2540] to-[#00CFFF] text-white' 
-                  : 'bg-gray-100 text-[#0A2540] group-hover:bg-gradient-to-r group-hover:from-[#0A2540] group-hover:to-[#00CFFF] group-hover:text-white'
-              }`}>
-                {getIconComponent(service.icon)}
-              </div>
-              
-              <h3 className="text-xl font-semibold text-[#0A2540] mb-3">{service.title}</h3>
-              <p className="text-gray-600 mb-4 leading-relaxed">{service.short_description || service.description}</p>
-              
-              <Link 
-                to={`/services#${service.slug}`}
-                className={`flex items-center text-sm font-medium transition-colors duration-300 ${
-                  activeService === index ? 'text-[#00CFFF]' : 'text-[#0A2540] group-hover:text-[#00CFFF]'
-                }`}
-              >
-                Learn More
-                <ArrowRight className="w-4 h-4 ml-1" />
-              </Link>
-            </div>
-          ))}
-        </div>
-        )}
-
-        {/* Active Service Details */}
-        {services.length > 0 && (
-        <div className="bg-white rounded-3xl shadow-xl overflow-hidden mb-20">
-          <div className="grid lg:grid-cols-2">
-            <div className="p-8 lg:p-12">
-              <div className="flex items-center mb-6">
-                <div className="w-12 h-12 bg-gradient-to-r from-[#0A2540] to-[#00CFFF] rounded-xl flex items-center justify-center text-white mr-4">
-                  {getIconComponent(services[activeService]?.icon)}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[1, 2, 3, 4].map((i) => (
+              <div key={i} className="bg-gray-50 rounded-xl p-6 animate-pulse h-64">
+                <div className="h-10 w-10 bg-gray-200 rounded-lg mb-4"></div>
+                <div className="h-6 bg-gray-200 rounded w-3/4 mb-3"></div>
+                <div className="space-y-2">
+                  <div className="h-4 bg-gray-200 rounded w-full"></div>
+                  <div className="h-4 bg-gray-200 rounded w-5/6"></div>
+                  <div className="h-4 bg-gray-200 rounded w-4/6"></div>
                 </div>
-                <h3 className="text-2xl font-bold text-[#0A2540]">{services[activeService]?.title}</h3>
-              </div>
-              
-              <p className="text-gray-600 mb-6 leading-relaxed text-lg">
-                {services[activeService]?.description}
-              </p>
-              
-              <div className="mb-8">
-                <h4 className="text-lg font-semibold text-[#0A2540] mb-4">What We Offer:</h4>
-                <p className="text-gray-600 leading-relaxed">
-                  Professional {services[activeService]?.title.toLowerCase()} services designed to meet your specific business needs and drive growth.
-                </p>
-              </div>
-              
-              <Link 
-                to={`/services#${services[activeService]?.slug}`}
-                className="bg-gradient-to-r from-[#0A2540] to-[#00CFFF] text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105 inline-block"
-              >
-                Get Started
-              </Link>
-            </div>
-            
-            <div className="bg-gradient-to-br from-[#0A2540] to-[#1a4a6e] p-8 lg:p-12 text-white">
-              <h4 className="text-xl font-semibold mb-6">Why Choose This Service?</h4>
-              
-              <div className="space-y-4 mb-8">
-                <div className="flex items-start">
-                  <div className="w-2 h-2 bg-[#00CFFF] rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                  <p className="text-white/80 text-sm leading-relaxed">
-                    Expert team with years of experience in {services[activeService]?.title.toLowerCase()}
-                  </p>
-                </div>
-                <div className="flex items-start">
-                  <div className="w-2 h-2 bg-[#00CFFF] rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                  <p className="text-white/80 text-sm leading-relaxed">
-                    Customized solutions tailored to your business requirements
-                  </p>
-                </div>
-                <div className="flex items-start">
-                  <div className="w-2 h-2 bg-[#00CFFF] rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                  <p className="text-white/80 text-sm leading-relaxed">
-                    Ongoing support and maintenance for long-term success
-                  </p>
-                </div>
-              </div>
-              
-              <div className="bg-white/5 backdrop-blur-sm p-6 rounded-xl border border-white/10">
-                <h5 className="font-semibold mb-2">Ready to Get Started?</h5>
-                <p className="text-white/80 text-sm leading-relaxed">
-                  Contact us today to discuss your project and discover how we can help you achieve your goals.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        )}
-
-        {/* Process Steps */}
-        <div className="text-center">
-          <h3 className="text-3xl font-bold text-[#0A2540] mb-12">Our Process</h3>
-          <div className="grid md:grid-cols-4 gap-8">
-            {processSteps.map((step, index) => (
-              <div key={index} className="relative">
-                <div className="w-16 h-16 bg-gradient-to-r from-[#0A2540] to-[#00CFFF] rounded-2xl flex items-center justify-center text-white mx-auto mb-4">
-                  {step.icon}
-                </div>
-                <h4 className="text-lg font-semibold text-[#0A2540] mb-2">{step.title}</h4>
-                <p className="text-gray-600 text-sm leading-relaxed">{step.desc}</p>
-                
-                {index < processSteps.length - 1 && (
-                  <div className="hidden md:block absolute top-8 left-full w-full h-px bg-gradient-to-r from-[#00CFFF] to-transparent transform -translate-x-8"></div>
-                )}
               </div>
             ))}
           </div>
+        ) : (
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {servicesToDisplay.map((service) => (
+              <div 
+                key={service.id} 
+                className="group bg-white border border-gray-100 rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+              >
+                <div className="w-12 h-12 bg-gradient-to-r from-[#0A2540] to-[#00CFFF] rounded-xl flex items-center justify-center text-white mb-4">
+                  {getServiceIcon(service.icon)}
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                  {service.title}
+                </h3>
+                <p className="text-gray-600 mb-5 text-sm">
+                  {getServiceDescription(service)}
+                </p>
+                <Link 
+                  to={`/services#${service.slug}`}
+                  className="inline-flex items-center text-sm font-medium text-[#00CFFF] hover:text-[#0A2540] transition-colors"
+                >
+                  Learn more
+                  <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </Link>
+              </div>
+            ))}
+          </div>
+        )}
+
+        <div className="mt-12 text-center">
+          <Link 
+            to="/services" 
+            className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-full text-white bg-gradient-to-r from-[#0A2540] to-[#00CFFF] hover:from-[#00CFFF] hover:to-[#0A2540] transition-all duration-300 shadow-sm hover:shadow-lg"
+          >
+            View All Services
+            <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </Link>
         </div>
       </div>
     </section>

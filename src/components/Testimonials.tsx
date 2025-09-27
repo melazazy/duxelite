@@ -76,38 +76,46 @@ const Testimonials: React.FC = () => {
   }
 
   return (
-    <section id="testimonials" className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#0A2540]">
+    <section id="testimonials" className="py-12 md:py-16 bg-white">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-8">
+          <h2 className="text-2xl md:text-3xl font-bold text-[#0A2540]">
             What Our Clients Say
           </h2>
-          <p className="mt-4 text-lg text-gray-600">
+          <p className="mt-2 text-gray-600">
             We are proud to have earned the trust of our amazing clients.
           </p>
         </div>
         <Swiper
           modules={[Pagination, Navigation, Autoplay]}
-          spaceBetween={30}
+          spaceBetween={24}
           slidesPerView={1}
-          pagination={{ clickable: true }}
+          pagination={{ clickable: true, dynamicBullets: true }}
           navigation
           autoplay={{ delay: 5000, disableOnInteraction: false }}
           loop
-          className="pb-12"
+          className="pb-8"
         >
           {testimonials.map((testimonial, index) => (
             <SwiperSlide key={index}>
-              <div className="bg-gray-50 p-8 rounded-2xl text-center max-w-3xl mx-auto">
-                <Quote className="w-12 h-12 text-[#00CFFF] mx-auto mb-6" />
-                <p className="text-lg text-gray-700 italic mb-8">
+              <div className="bg-gray-50 p-6 md:p-8 rounded-xl text-center max-w-2xl mx-auto">
+                <Quote className="w-8 h-8 text-[#00CFFF] mx-auto mb-4" />
+                <p className="text-gray-700 italic mb-6 leading-relaxed">
                   {testimonial.quote}
                 </p>
-                <div className="flex items-center justify-center">
-                  <img src={testimonial.avatar || DEFAULT_AVATAR} alt={testimonial.name} className="w-12 h-12 rounded-full mr-4 object-cover" />
-                  <div>
-                    <p className="font-semibold text-[#0A2540]">{testimonial.name}</p>
-                    <p className="text-gray-500">{testimonial.title}</p>
+                <div className="flex items-center justify-center space-x-3">
+                  <img 
+                    src={testimonial.avatar || DEFAULT_AVATAR} 
+                    alt={testimonial.name} 
+                    className="w-10 h-10 rounded-full object-cover flex-shrink-0" 
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.src = DEFAULT_AVATAR;
+                    }}
+                  />
+                  <div className="text-left">
+                    <p className="font-medium text-[#0A2540] text-sm">{testimonial.name}</p>
+                    <p className="text-gray-500 text-xs">{testimonial.title}</p>
                   </div>
                 </div>
               </div>

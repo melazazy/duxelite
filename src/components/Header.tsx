@@ -28,6 +28,11 @@ const Header: React.FC = () => {
   }, []);
 
   const scrollToSection = (sectionId: string) => {
+    if (sectionId === 'case-studies') {
+      window.location.href = '/#case-studies';
+      return;
+    }
+    
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
@@ -40,7 +45,7 @@ const Header: React.FC = () => {
     { id: 'about', label: 'About Us' },
     { id: 'services', label: 'Services' },
     { id: 'portfolio', label: 'Portfolio' },
-    { id: 'case-studies', label: 'Case Studies' },
+    { id: 'case-studies', label: 'Case Studies', href: '/#case-studies' },
     { id: 'blog', label: 'Blog' },
     { id: 'contact', label: 'Contact' }
   ];
@@ -65,9 +70,15 @@ const Header: React.FC = () => {
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">
             {navItems.map((item) => (
-              <button
+              <a
                 key={item.id}
-                onClick={() => scrollToSection(item.id)}
+                href={item.href || `#${item.id}`}
+                onClick={(e) => {
+                  if (!item.href) {
+                    e.preventDefault();
+                    scrollToSection(item.id);
+                  }
+                }}
                 className={`relative font-medium transition-colors duration-300 ${
                   activeSection === item.id 
                     ? 'text-[#00CFFF]' 
@@ -78,7 +89,7 @@ const Header: React.FC = () => {
                 {activeSection === item.id && (
                   <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[#00CFFF] rounded-full"></span>
                 )}
-              </button>
+              </a>
             ))}
           </nav>
 

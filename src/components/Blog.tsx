@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Calendar, User, Tag, Clock, ArrowRight, Search } from 'lucide-react';
+import { User, Clock, ArrowRight, Search } from 'lucide-react';
 import { useBlogPosts } from '../hooks/useApi';
 import { Link } from "react-router-dom";
 
@@ -21,51 +21,19 @@ const Blog: React.FC = () => {
     { id: 'case-studies', name: 'Case Studies' }
   ];
 
-  const blogPosts = [
-    {
-      id: 1,
-      title: 'AI in ERP: The Future is Now',
-      excerpt: 'How AI is transforming business operations through intelligent automation.',
-      category: 'erp-systems',
-      author: 'Sarah Johnson',
-      date: '2024-01-15',
-      readTime: '5 min read',
-      image: 'https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg',
-      tags: ['ERP', 'AI', 'Automation']
-    },
-    {
-      id: 2,
-      title: 'React 18: Performance Revolution',
-      excerpt: 'Discover the game-changing features that make React 18 faster than ever.',
-      category: 'web-development',
-      author: 'Michael Chen',
-      date: '2024-01-12',
-      readTime: '6 min read',
-      image: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg',
-      tags: ['React', 'Performance', 'JavaScript']
-    },
-    {
-      id: 3,
-      title: 'Digital Transformation Roadmap',
-      excerpt: 'Essential strategies for successful digital transformation in 2024.',
-      category: 'digital-trends',
-      author: 'Lisa Rodriguez',
-      date: '2024-01-10',
-      readTime: '7 min read',
-      image: 'https://images.pexels.com/photos/3184306/pexels-photo-3184306.jpeg',
-      tags: ['Strategy', 'Business', 'Innovation']
-    }
-  ];
 
   const posts = blogData?.data || [];
   const featuredPost = posts[0] || {
+    id: 0,
     title: 'Loading...',
+    slug: 'loading',
     excerpt: 'Loading the latest articles...',
-    author: 'Loading...',
-    date: new Date().toISOString(),
-    readTime: '2 min read',
+    author: { name: 'Loading...' },
+    published_at: new Date().toISOString(),
+    read_time: '...',
+    category: { name: 'General', slug: 'general' },
     tags: ['loading'],
-    image: '/placeholder-blog.jpg'
+    featured_image: '/placeholder-blog.jpg'
   };
   const regularPosts = posts.length > 1 ? posts.slice(1) : [];
   
@@ -160,16 +128,16 @@ const Blog: React.FC = () => {
               <div className="flex items-center space-x-4 mb-6 text-sm text-white/60">
                 <div className="flex items-center">
                   <User className="w-4 h-4 mr-2" />
-                  {featuredPost.author}
+                  {typeof featuredPost.author === 'object' ? featuredPost.author?.name : featuredPost.author}
                 </div>
                 <div className="flex items-center">
                   <Clock className="w-4 h-4 mr-2" />
-                  {featuredPost.readTime}
+                  {featuredPost.read_time}
                 </div>
               </div>
 
               <div className="flex flex-wrap gap-2 mb-6">
-                {featuredPost.tags.slice(0, 3).map((tag, index) => (
+                {(featuredPost.tags || []).slice(0, 3).map((tag, index) => (
                   <span key={index} className="px-3 py-1 bg-white/10 rounded-full text-xs">
                     #{tag}
                   </span>
@@ -184,7 +152,7 @@ const Blog: React.FC = () => {
             
             <div className="relative">
               <img
-                src={featuredPost.image}
+                src={featuredPost.featured_image}
                 alt={featuredPost.title}
                 className="w-full h-full object-cover"
               />
@@ -193,76 +161,26 @@ const Blog: React.FC = () => {
           </div>
         </div>
 
-        {/* Blog Posts Grid */}
-        {loading ? (
+        {/* Loading and Error States */}
+        {loading && (
           <div className="text-center py-12">
             <div className="w-8 h-8 border-2 border-[#00CFFF]/30 border-t-[#00CFFF] rounded-full animate-spin mx-auto mb-4"></div>
             <p className="text-gray-600">Loading articles...</p>
           </div>
-        ) : error ? (
+        )}
+        
+        {error && (
           <div className="text-center py-12">
             <p className="text-red-600">Error loading articles: {error}</p>
           </div>
-        ) : (
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {regularPosts.slice(0, 6).map((post) => (
-            <article key={post.id} className="group bg-white rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100">
-              <div className="relative overflow-hidden">
-                <img
-                  src={post.image}
-                  alt={post.title}
-                  className="w-full h-40 object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-                <div className="absolute top-4 left-4">
-                  <span className="px-3 py-1 bg-white/90 backdrop-blur-sm text-[#0A2540] text-xs font-medium rounded-full">
-                    {categories.find(cat => cat.id === post.category)?.name}
-                  </span>
-                </div>
-              </div>
-
-              <div className="p-5">
-                <h3 className="text-lg font-semibold text-[#0A2540] mb-2 leading-tight group-hover:text-[#00CFFF] transition-colors duration-300">
-                  {post.title}
-                </h3>
-                
-                <p className="text-gray-600 mb-3 leading-relaxed text-sm line-clamp-2">
-                  {post.excerpt}
-                </p>
-
-                <div className="flex items-center justify-between text-xs text-gray-500 mb-3">
-                  <div className="flex items-center space-x-2">
-                    <div className="flex items-center">
-                      <User className="w-3 h-3 mr-1" />
-                      {post.author}
-                    </div>
-                  </div>
-                  <div className="flex items-center">
-                    <Clock className="w-3 h-3 mr-1" />
-                    {post.readTime}
-                  </div>
-                </div>
-
-                <div className="flex flex-wrap gap-1 mb-3">
-                  {post.tags.slice(0, 2).map((tag, index) => (
-                    <span key={index} className="px-2 py-1 bg-gray-100 text-[#0A2540] text-xs rounded-full">
-                      #{tag}
-                    </span>
-                  ))}
-                </div>
-
-                <Link to={`/blog/${post.slug || post.id}`} className="text-[#0A2540] font-medium text-sm hover:text-[#00CFFF] transition-colors duration-300 flex items-center">
-                  Read More
-                  <ArrowRight className="w-4 h-4 ml-1" />
-                </Link>
-              </div>
-            </article>
-          ))}
-        </div>
         )}
 
         {/* CTA to Blog Page */}
-        <div className="text-center">
-          <Link to="/blog" className="inline-flex items-center bg-gradient-to-r from-[#0A2540] to-[#00CFFF] text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105">
+        <div className="text-center mt-12">
+          <Link 
+            to="/blog" 
+            className="inline-flex items-center bg-gradient-to-r from-[#0A2540] to-[#00CFFF] text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105"
+          >
             Read All Articles
             <ArrowRight className="w-5 h-5 ml-2" />
           </Link>

@@ -8,8 +8,10 @@ const AboutHeader: React.FC = () => {
 
   const navItems = [
     { path: '/', label: 'Home' },
+    { path: '/about', label: 'About Us' },
     { path: '/services', label: 'Services' },
     { path: '/portfolio', label: 'Portfolio' },
+    { path: '/case-studies', label: 'Case Studies' },
     { path: '/blog', label: 'Blog' },
     { path: '/contact', label: 'Contact' },
   ];

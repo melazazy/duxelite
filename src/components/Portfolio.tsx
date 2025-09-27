@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ExternalLink, Github, Eye,ArrowRight } from 'lucide-react';
+import { ExternalLink, Eye, ArrowRight } from 'lucide-react';
 import { usePortfolioProjects } from '../hooks/useApi';
 import type { PortfolioProject } from '../services/apiService';
 import { Link } from "react-router-dom";
@@ -24,6 +24,7 @@ const Portfolio: React.FC = () => {
     {
       id: 1,
       title: 'E-commerce Platform',
+      slug: 'e-commerce-platform',
       category: { id: 1, name: 'Web Development', slug: 'web-development' },
       description: 'A full-featured e-commerce platform with inventory management and payment processing.',
       image: '/images/portfolio/ecommerce.jpg',
@@ -35,6 +36,7 @@ const Portfolio: React.FC = () => {
     {
       id: 2,
       title: 'Mobile Banking App',
+      slug: 'mobile-banking-app',
       category: { id: 2, name: 'Mobile Apps', slug: 'mobile-apps' },
       description: 'A secure mobile banking application for managing accounts and transactions on the go.',
       image: '/images/portfolio/banking-app.jpg',
@@ -46,6 +48,7 @@ const Portfolio: React.FC = () => {
     {
       id: 3,
       title: 'Enterprise Dashboard',
+      slug: 'enterprise-dashboard',
       category: { id: 1, name: 'Web Development', slug: 'web-development' },
       description: 'A comprehensive dashboard for enterprise analytics and data visualization.',
       image: '/images/portfolio/dashboard.jpg',
@@ -57,6 +60,7 @@ const Portfolio: React.FC = () => {
     {
       id: 4,
       title: 'Fitness Tracker',
+      slug: 'fitness-tracker',
       category: { id: 2, name: 'Mobile Apps', slug: 'mobile-apps' },
       description: 'A fitness tracking application with workout plans and progress monitoring.',
       image: '/images/portfolio/fitness-app.jpg',
@@ -68,6 +72,7 @@ const Portfolio: React.FC = () => {
     {
       id: 5,
       title: 'Restaurant Website',
+      slug: 'restaurant-website',
       category: { id: 1, name: 'Web Development', slug: 'web-development' },
       description: 'A responsive website for a restaurant with online ordering and table reservation.',
       image: '/images/portfolio/restaurant.jpg',
@@ -79,6 +84,7 @@ const Portfolio: React.FC = () => {
     {
       id: 6,
       title: 'Retail POS System',
+      slug: 'retail-pos-system',
       category: { id: 3, name: 'ERP Systems', slug: 'erp-systems' },
       description: 'A point of sale system with inventory management for retail businesses.',
       image: '/images/portfolio/pos-system.jpg',
@@ -89,7 +95,8 @@ const Portfolio: React.FC = () => {
     }
   ];
   // Use API data if available, otherwise use fallback data
-  const projects: PortfolioProject[] = Array.isArray(apiProjects) ? apiProjects : fallbackProjects;
+  const projects: PortfolioProject[] = (apiProjects && apiProjects.length > 0) ? apiProjects : fallbackProjects;
+
   const filteredProjects = activeFilter === 'all' 
     ? projects 
     : projects.filter((project) => project.category?.slug === activeFilter);
@@ -159,7 +166,7 @@ const Portfolio: React.FC = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="absolute bottom-4 right-4">
                     <div className="px-3 py-1 bg-[#00CFFF] text-white text-xs font-medium rounded-full">
-                      {categories.find(cat => cat.id === project.category.slug)?.name}
+                      {project.category?.name}
                     </div>
                   </div>
                 </div>

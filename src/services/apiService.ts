@@ -222,25 +222,28 @@ export interface Service {
 }
 
 export interface CaseStudy {
-  id: number;
+  id: number | string;
   title: string;
   slug: string;
   description: string;
   client: string;
-  published_at: string;
+  industry: string;
+  featured?: boolean;
+  short_description?: string;
+  challenge: string;
+  solution: string;
+  results: Array<{
+    metric: string;
+    description: string;
+  }>;
+  technologies: string[];
+  timeline: string;
+  image: string;
+  published_at?: string;
   project?: {
     title: string;
     slug: string;
   };
-  challenge?: string;
-  solution?: string;
-  results?: Array<{
-    metric: string;
-    description: string;
-  }>;
-  technologies?: string[];
-  timeline?: string;
-  image?: string;
 }
 
 export interface Testimonial {
