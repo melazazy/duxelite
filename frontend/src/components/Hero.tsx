@@ -1,0 +1,143 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { ArrowRight, CheckCircle } from 'lucide-react';
+import siteData from '../data/siteData.json';
+
+const Hero: React.FC = () => {
+  const { hero } = siteData.home;
+  const stats = hero.stats.map(stat => ({
+    number: stat.number,
+    label: stat.label
+  }));
+  
+  const achievements = siteData.home.features.map(feature => feature.title);
+
+  return (
+    <section id="home" className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-[#0A2540] via-[#0A2540] to-[#1a4a6e]">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute top-20 left-20 w-64 h-64 bg-[#00CFFF] rounded-full filter blur-3xl"></div>
+        <div className="absolute bottom-20 right-20 w-96 h-96 bg-[#00CFFF] rounded-full filter blur-3xl"></div>
+      </div>
+
+      {/* Geometric Shapes */}
+      <div className="absolute top-10 right-10 w-32 h-32 border-2 border-[#00CFFF]/30 rotate-45 rounded-lg"></div>
+      <div className="absolute bottom-20 left-10 w-24 h-24 border-2 border-white/20 rotate-12 rounded-lg"></div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Content */}
+          <div className="space-y-8">
+            <div className="space-y-6">
+              <div className="inline-flex items-center px-4 py-2 bg-white/10 rounded-full text-[#00CFFF] text-sm font-medium backdrop-blur-sm">
+                <span className="w-2 h-2 bg-[#00CFFF] rounded-full mr-2"></span>
+                {siteData.site.tagline}
+              </div>
+              
+              <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight">
+                {hero.title.split(' ')[0]} {hero.title.split(' ')[1]}
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#00CFFF] to-white">
+                  {hero.title.split(' ').slice(2, 4).join(' ')}
+                </span>
+                {hero.title.split(' ').slice(4).join(' ')}
+              </h1>
+              
+              <p className="text-xl text-white/80 leading-relaxed max-w-2xl">
+                {hero.subtitle}
+              </p>
+            </div>
+
+            {/* Achievement List */}
+            <div className="grid grid-cols-2 gap-4">
+              {achievements.map((achievement, index) => (
+                <div key={index} className="flex items-center space-x-3">
+                  <CheckCircle className="w-5 h-5 text-[#00CFFF] flex-shrink-0" />
+                  <span className="text-white/90 text-sm">{achievement}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link 
+                to={hero.ctaButtons[0].path}
+                className="group bg-gradient-to-r from-[#00CFFF] to-[#0A2540] text-white px-8 py-4 rounded-full font-semibold hover:shadow-2xl transition-all duration-300 transform hover:scale-105 flex items-center justify-center"
+              >
+                {hero.ctaButtons[0].text}
+                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+              </Link>
+              
+              <Link 
+                to={hero.ctaButtons[1].path}
+                className="group bg-white/10 text-white px-8 py-4 rounded-full font-semibold backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all duration-300 flex items-center justify-center"
+              >
+                {hero.ctaButtons[1].text}
+                <ArrowRight className="w-5 h-5 ml-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+              </Link>
+            </div>
+
+            {/* Stats */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-8 border-t border-white/10">
+              {stats.map((stat, index) => (
+                <div key={index} className="text-center">
+                  <div className="text-2xl md:text-3xl font-bold text-white mb-1">{stat.number}</div>
+                  <div className="text-white/60 text-sm">{stat.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Visual Element */}
+          <div className="relative">
+            <div className="relative z-10 bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8">
+              <div className="space-y-6">
+                <div className="flex items-center justify-between">
+                  <div className="flex space-x-2">
+                    <div className="w-3 h-3 bg-red-400 rounded-full"></div>
+                    <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
+                    <div className="w-3 h-3 bg-green-400 rounded-full"></div>
+                  </div>
+                  <div className="text-white/40 text-xs">Duxelite Dashboard</div>
+                </div>
+                
+                <div className="space-y-4">
+                  <div className="bg-gradient-to-r from-[#00CFFF]/20 to-transparent p-4 rounded-lg border-l-2 border-[#00CFFF]">
+                    <div className="text-white/90 text-sm font-medium mb-1">Website Performance</div>
+                    <div className="text-2xl font-bold text-white">98.5%</div>
+                    <div className="text-[#00CFFF] text-xs">↑ 12% from last month</div>
+                  </div>
+                  
+                  <div className="bg-white/5 p-4 rounded-lg">
+                    <div className="text-white/90 text-sm font-medium mb-1">Active Projects</div>
+                    <div className="text-2xl font-bold text-white">24</div>
+                    <div className="text-green-400 text-xs">↑ 8 new projects</div>
+                  </div>
+                  
+                  <div className="bg-white/5 p-4 rounded-lg">
+                    <div className="text-white/90 text-sm font-medium mb-1">Client Satisfaction</div>
+                    <div className="text-2xl font-bold text-white">99.2%</div>
+                    <div className="text-[#00CFFF] text-xs">Perfect rating</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            {/* Floating Elements */}
+            <div className="absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-r from-[#00CFFF] to-[#0A2540] rounded-2xl opacity-80 animate-pulse"></div>
+            <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-r from-[#0A2540] to-[#00CFFF] rounded-xl opacity-60 animate-pulse delay-1000"></div>
+          </div>
+        </div>
+      </div>
+
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+        <div className="flex flex-col items-center space-y-2 animate-bounce">
+          <span className="text-white/60 text-xs">Scroll Down</span>
+          <div className="w-px h-8 bg-gradient-to-b from-white/60 to-transparent"></div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Hero;

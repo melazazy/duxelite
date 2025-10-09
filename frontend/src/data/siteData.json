@@ -1,0 +1,448 @@
+{
+  "site": {
+    "name": "Duxelite",
+    "tagline": "Elite Digital Transformation",
+    "description": "Transforming businesses through innovative web development, ERP systems, and digital solutions. Your trusted partner for digital success.",
+    "logo": "/assets/logo_02.png",
+    "logo_white": "/assets/logo_01.png",
+    "logo_black": "/assets/logo_02.png",
+    "favicon": "/favicon.ico",
+    "language": "en",
+    "defaultLocale": "en",
+    "availableLocales": ["en", "ar"],
+    "version": "1.0.0",
+    "theme": {
+      "primaryColor": "#00CFFF",
+      "secondaryColor": "#0A2540",
+      "accentColor": "#1a4a6e",
+      "textColor": "#333333",
+      "lightText": "#ffffff",
+      "darkText": "#0A2540",
+      "gradient": "linear-gradient(135deg, #00CFFF 0%, #0A2540 100%)",
+      "borderRadius": "0.5rem",
+      "boxShadow": "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)"
+    },
+    "images": {
+      "hero": "https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg",
+      "about": "https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg",
+      "placeholder": "https://via.placeholder.com/600x400?text=Image+Coming+Soon"
+    }
+  },
+  "contact": {
+    "email": "support@duxelite.net",
+    "phone": "+201094569809",
+    "phoneFormatted": "+201094569809",
+    "address": "123 Mahata sq, elashraf-elghrbya, qena, Egypt",
+    "mapUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12345.6789!2d-0.1234567!3d51.5074!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTHCsDMwJzI2LjYiTiAwwrAwNyc0MS4xIlc!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus",
+    "workingHours": "Sunday - Thursday, 9:00 AM - 6:00 PM",
+    "socialMedia": [
+      {
+        "name": "Facebook",
+        "icon": "facebook",
+        "url": "https://facebook.com/duxelite",
+        "color": "#1877F2"
+      },
+      {
+        "name": "Twitter",
+        "icon": "twitter",
+        "url": "https://twitter.com/duxelite",
+        "color": "#1DA1F2"
+      },
+      {
+        "name": "Instagram",
+        "icon": "instagram",
+        "url": "https://instagram.com/duxelite",
+        "color": "#E1306C"
+      },
+      {
+        "name": "LinkedIn",
+        "icon": "linkedin",
+        "url": "https://linkedin.com/company/duxelite",
+        "color": "#0077B5"
+      }
+    ]
+  },
+  "navigation": {
+    "header": [
+      { "id": "home", "label": "Home", "type": "scroll", "path": "/", "icon": "home" },
+      { "id": "about", "label": "About Us", "type": "scroll", "path": "/#about", "icon": "users" },
+      {
+        "id": "services",
+        "label": "Services",
+        "type": "scroll",
+        "path": "/#services",
+        "icon": "settings"
+      },
+      {
+        "id": "portfolio",
+        "label": "Portfolio",
+        "type": "scroll",
+        "path": "/#portfolio",
+        "icon": "briefcase"
+      },
+      {
+        "id": "case-studies",
+        "label": "Case Studies",
+        "type": "scroll",
+        "path": "/#case-studies",
+        "icon": "layers"
+      },
+      { "id": "blog", "label": "Blog", "type": "link", "path": "/blog", "icon": "book-open" },
+      { "id": "contact", "label": "Contact", "type": "link", "path": "/contact", "icon": "mail" }
+    ],
+    "footer": {
+      "services": [
+        { "label": "Custom Web Development", "path": "/services/web-development" },
+        { "label": "ERP System Solutions", "path": "/services/erp-solutions" },
+        { "label": "Mobile App Development", "path": "/services/mobile-apps" },
+        { "label": "E-commerce Platforms", "path": "/services/ecommerce" },
+        { "label": "Digital Consulting", "path": "/services/consulting" },
+        { "label": "Technical Support", "path": "/services/support" }
+      ],
+      "industries": [
+        { "label": "Healthcare", "path": "/industries/healthcare" },
+        { "label": "Manufacturing", "path": "/industries/manufacturing" },
+        { "label": "E-commerce", "path": "/industries/ecommerce" },
+        { "label": "Financial Services", "path": "/industries/finance" },
+        { "label": "Education", "path": "/industries/education" },
+        { "label": "Real Estate", "path": "/industries/real-estate" }
+      ],
+      "company": [
+        { "label": "About Us", "path": "/about" },
+        { "label": "Our Team", "path": "/team" },
+        { "label": "Careers", "path": "/careers" },
+        { "label": "Contact Us", "path": "/contact" },
+        { "label": "Privacy Policy", "path": "/privacy" },
+        { "label": "Terms of Service", "path": "/terms" }
+      ]
+    }
+  },
+  "home": {
+    "hero": {
+      "title": "Transform Yours Digital Vision Into Reality",
+      "subtitle": "We specialize in creating cutting-edge websites, robust web systems, and comprehensive ERP solutions that drive business growth and digital transformation.",
+      "backgroundImage": "/images/hero-bg.jpg",
+      "ctaButtons": [
+        {
+          "text": "Get a Quote",
+          "path": "/contact",
+          "variant": "primary",
+          "icon": "message-circle"
+        },
+        {
+          "text": "View Our Work",
+          "path": "/portfolio",
+          "variant": "secondary",
+          "icon": "eye"
+        }
+      ],
+      "stats": [
+        { "number": "200+", "label": "Projects Completed", "icon": "check-circle" },
+        { "number": "50+", "label": "Happy Clients", "icon": "users" },
+        { "number": "5+", "label": "Years Experience", "icon": "award" },
+        { "number": "99%", "label": "Client Satisfaction", "icon": "thumbs-up" }
+      ]
+    },
+    "about": {
+      "title": "Your Partner in Digital Innovation",
+      "description": "We are a team of strategists, designers, and developers passionate about creating powerful digital solutions. From custom web applications to scalable ERP systems, we build products that drive growth and deliver exceptional user experiences.",
+      "cta": {
+        "text": "Discover Our Story",
+        "path": "/about"
+      },
+      "image": "/images/about-us.jpg"
+    },
+    "features": [
+      {
+        "title": "Custom Web Development",
+        "description": "Tailored web solutions that drive results",
+        "icon": "code"
+      },
+      {
+        "title": "ERP System Solutions",
+        "description": "Streamline your business operations",
+        "icon": "database"
+      },
+      {
+        "title": "24/7 Technical Support",
+        "description": "Round-the-clock assistance",
+        "icon": "headphones"
+      },
+      {
+        "title": "SEO Optimization",
+        "description": "Improve your online visibility",
+        "icon": "bar-chart-2"
+      }
+    ]
+  },
+  "cta": {
+    "title": "Ready to Start Your Project?",
+    "description": "Let's work together to build a powerful web solution that drives your business forward.",
+    "buttonText": "Let's Start Your Project",
+    "buttonPath": "/contact",
+    "backgroundImage": "/images/cta-bg.jpg",
+    "overlayColor": "rgba(10, 37, 64, 0.9)",
+    "textColor": "#ffffff"
+  },
+  "seo": {
+    "defaultTitle": "Duxelite - Digital Solutions & Web Development",
+    "defaultDescription": "Transform your business with our cutting-edge web development and digital solutions. Custom websites, ERP systems, and more.",
+    "siteUrl": "https://duxelite.com",
+    "siteName": "Duxelite",
+    "locale": "en_US",
+    "twitterHandle": "@duxelite",
+    "keywords": [
+      "web development",
+      "digital solutions",
+      "ERP systems",
+      "ecommerce",
+      "custom software",
+      "mobile app development",
+      "UI/UX design",
+      "digital marketing",
+      "business automation",
+      "cloud solutions"
+    ],
+    "author": "Duxelite Team",
+    "robots": "index, follow",
+    "themeColor": "#00CFFF",
+    "backgroundColor": "#0A2540",
+    "social": {
+      "twitterCard": "summary_large_image",
+      "ogType": "website",
+      "ogImage": "/images/og-image.jpg",
+      "ogImageWidth": "1200",
+      "ogImageHeight": "630",
+      "fbAppId": ""
+    },
+    "structuredData": {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Duxelite",
+      "url": "https://duxelite.com",
+      "logo": "https://duxelite.com/images/logo.png",
+      "sameAs": [
+        "https://facebook.com/duxelite",
+        "https://twitter.com/duxelite",
+        "https://linkedin.com/company/duxelite",
+        "https://instagram.com/duxelite"
+      ]
+    }
+  },
+  "forms": {
+    "newsletter": {
+      "title": "Subscribe to Our Newsletter",
+      "description": "Get the latest news, updates, and exclusive offers delivered to your inbox.",
+      "placeholder": "Enter your email",
+      "buttonText": "Subscribe",
+      "successMessage": "Thank you for subscribing!",
+      "errorMessage": "Please enter a valid email address",
+      "privacyNote": "We respect your privacy. Unsubscribe at any time.",
+      "socialProof": {
+        "text": "Join {count}+ subscribers",
+        "count": 1000
+      },
+      "options": [
+        {
+          "id": "news",
+          "label": "News & Updates",
+          "checked": true
+        },
+        {
+          "id": "offers",
+          "label": "Special Offers",
+          "checked": true
+        },
+        {
+          "id": "events",
+          "label": "Events & Webinars",
+          "checked": false
+        }
+      ]
+    },
+    "contact": {
+      "title": "Get In Touch",
+      "description": "Have a question or want to work with us? Send us a message and we'll get back to you as soon as possible.",
+      "name": {
+        "label": "Full Name",
+        "placeholder": "John Doe",
+        "required": true,
+        "error": "Please enter your name"
+      },
+      "email": {
+        "label": "Email Address",
+        "placeholder": "you@example.com",
+        "required": true,
+        "error": "Please enter a valid email address"
+      },
+      "phone": {
+        "label": "Phone Number",
+        "placeholder": "+1 (555) 123-4567",
+        "required": false,
+        "error": "Please enter a valid phone number"
+      },
+      "company": {
+        "label": "Company Name",
+        "placeholder": "Your Company",
+        "required": false
+      },
+      "subject": {
+        "label": "Subject",
+        "placeholder": "How can we help you?",
+        "required": true,
+        "error": "Please enter a subject"
+      },
+      "budget": {
+        "label": "Project Budget",
+        "options": [
+          "$1,000 - $5,000",
+          "$5,000 - $15,000",
+          "$15,000 - $50,000",
+          "$50,000+",
+          "Not sure yet"
+        ],
+        "required": false
+      },
+      "services": {
+        "label": "Interested In",
+        "options": [
+          "Web Development",
+          "Mobile App Development",
+          "UI/UX Design",
+          "Digital Marketing",
+          "ERP Solutions",
+          "Other"
+        ],
+        "required": true,
+        "error": "Please select at least one service"
+      },
+      "message": {
+        "label": "Your Message",
+        "placeholder": "Tell us about your project...",
+        "required": true,
+        "error": "Please enter your message"
+      },
+      "privacyPolicy": {
+        "text": "I agree to the [privacy policy](/privacy) and [terms of service](/terms).",
+        "required": true,
+        "error": "You must accept the privacy policy"
+      },
+      "submitButton": "Send Message",
+      "sendingButton": "Sending...",
+      "successMessage": "Thank you for your message! We'll get back to you within 24 hours.",
+      "errorMessage": "There was an error sending your message. Please try again later.",
+      "validationErrors": {
+        "required": "This field is required",
+        "email": "Please enter a valid email address",
+        "minLength": "This field must be at least {min} characters",
+        "maxLength": "This field cannot exceed {max} characters"
+      },
+      "fileUpload": {
+        "label": "Attach Files",
+        "buttonText": "Choose File",
+        "noFileText": "No file chosen",
+        "maxSize": 10,
+        "maxSizeText": "Max file size: 10MB",
+        "allowedTypes": ["pdf", "doc", "docx", "jpg", "jpeg", "png"],
+        "error": {
+          "type": "File type not allowed. Allowed types: {types}",
+          "size": "File is too large. Maximum size: {maxSize}MB"
+        }
+      }
+    },
+    "search": {
+      "placeholder": "Search...",
+      "buttonText": "Search",
+      "noResults": "No results found",
+      "recentSearches": "Recent Searches",
+      "popularSearches": "Popular Searches"
+    },
+    "copyright": {
+      "text": "© 2025 Duxelite Digital Solutions. All rights reserved.",
+      "madeWith": "Made with",
+      "for": "for innovation",
+      "links": [
+        { "text": "Privacy Policy", "path": "/privacy" },
+        { "text": "Terms of Service", "path": "/terms" },
+        { "text": "Cookie Policy", "path": "/cookies" },
+        { "text": "Sitemap", "path": "/sitemap.xml" }
+      ]
+    },
+    "notifications": {
+      "success": {
+        "title": "Success",
+        "message": "Operation completed successfully"
+      },
+      "error": {
+        "title": "Error",
+        "message": "An error occurred. Please try again."
+      },
+      "warning": {
+        "title": "Warning",
+        "message": "This action cannot be undone"
+      },
+      "info": {
+        "title": "Information",
+        "message": "Please check the information provided"
+      }
+    },
+    "dateTime": {
+      "format": {
+        "short": "MM/DD/YYYY",
+        "medium": "MMM D, YYYY",
+        "long": "MMMM D, YYYY",
+        "full": "dddd, MMMM D, YYYY",
+        "time": "h:mm A",
+        "dateTime": "MMM D, YYYY [at] h:mm A"
+      },
+      "timezone": "America/New_York"
+    },
+    "pagination": {
+      "previous": "Previous",
+      "next": "Next",
+      "page": "Page",
+      "of": "of",
+      "showing": "Showing",
+      "to": "to",
+      "ofTotal": "of {total}",
+      "itemsPerPage": "Items per page"
+    },
+    "validation": {
+      "required": "{field} is required",
+      "email": "Please enter a valid email address",
+      "minLength": "{field} must be at least {min} characters",
+      "maxLength": "{field} cannot exceed {max} characters",
+      "passwordMatch": "Passwords do not match",
+      "invalidUrl": "Please enter a valid URL",
+      "invalidPhone": "Please enter a valid phone number"
+    },
+    "accessibility": {
+      "skipToContent": "Skip to main content",
+      "menuToggle": "Toggle menu",
+      "closeMenu": "Close menu",
+      "openMenu": "Open menu",
+      "search": "Search",
+      "loading": "Loading...",
+      "backToTop": "Back to top",
+      "externalLink": "(opens in a new tab)",
+      "externalLinkAria": "opens in a new tab",
+      "requiredField": "required field"
+    },
+    "languages": [
+      {
+        "code": "en",
+        "name": "English",
+        "nativeName": "English",
+        "isRTL": false
+      },
+      {
+        "code": "ar",
+        "name": "Arabic",
+        "nativeName": "العربية",
+        "isRTL": true
+      }
+    ],
+    "version": "1.0.0",
+    "lastUpdated": "2023-11-15T12:00:00Z"
+  }
+}

@@ -1,0 +1,8 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# Frontend linting and formatting
+cd frontend && npm run lint && npm run format
+
+# Backend code style check
+cd ../backend && ./vendor/bin/php-cs-fixer fix --dry-run --diff

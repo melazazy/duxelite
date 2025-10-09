@@ -1,147 +1,69 @@
-# Duxelite Corporate Website
+# DuxOne - All-in-One Business Platform (SaaS)
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![Next.js](https://img.shields.io/badge/Next.js-13.4+-000000?style=flat&logo=next.js&logoColor=white)](https://nextjs.org/)
-[![Laravel](https://img.shields.io/badge/Laravel-12.x-FF2D20?style=flat&logo=laravel&logoColor=white)](https://laravel.com/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.3.0-38B2AC?style=flat&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+A comprehensive SaaS platform with modular architecture for accounting, HR, and CRM functionalities.
 
-## 🌟 Overview
+## Project Structure
 
-Duxelite is a modern corporate website built with Next.js and Laravel, designed to showcase our services in web development, ERP systems, SaaS platforms, and e-learning solutions. The website is built with performance, accessibility, and SEO in mind.
+This project uses a monorepo structure:
 
-## ✨ Features
+- `/frontend` - React/TypeScript frontend with Vite and Tailwind CSS
+- `/backend` - Laravel PHP backend API
+- `/database` - Database migrations and seeders
 
-- **Modern & Responsive Design**
-  - Mobile-first approach
-  - Dark mode support
-  - Smooth animations and transitions
-
-- **Core Pages**
-  - Homepage with key services and portfolio highlights
-  - Detailed service pages
-  - Portfolio with case studies
-  - Blog with SEO optimization
-  - Contact page with integrated forms
-
-- **Technical Highlights**
-  - Server-side rendering with Next.js
-  - RESTful API with Laravel
-  - Optimized for Core Web Vitals
-  - Multi-language support ready
-
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
-- Node.js 18+
-- PHP 8.2+
-- Composer 2.5+
-- MySQL 8.0+
-- Redis (for caching and queues)
+- Node.js 16+
+- PHP 8.1+
+- Composer
+- MySQL or PostgreSQL
 
 ### Installation
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/your-org/duxelite-website.git
-   cd duxelite-website
-   ```
-
-2. **Install Frontend Dependencies**
-   ```bash
-   cd frontend
-   npm install
-   ```
-
-3. **Install Backend Dependencies**
-   ```bash
-   cd ../backend
-   composer install
-   ```
-
-4. **Environment Setup**
-   - Copy `.env.example` to `.env` in both frontend and backend directories
-   - Generate application key: `php artisan key:generate`
-   - Configure database and other environment variables
-
-5. **Database Setup**
-   ```bash
-   php artisan migrate --seed
-   ```
-
-6. **Start Development Servers**
-   - Frontend: `npm run dev` (runs on http://localhost:3000)
-   - Backend: `php artisan serve` (runs on http://localhost:8000)
-
-## 🛠 Development
-
-### Frontend Development
+1. Clone the repository:
 ```bash
-cd frontend
+git clone https://github.com/yourusername/duxone.git
+cd duxone
+```
+
+2. Install dependencies:
+```bash
+npm install
+cd backend && composer install
+```
+
+3. Set up environment variables:
+```bash
+cp backend/.env.example backend/.env
+# Configure your database settings in .env
+```
+
+4. Run migrations:
+```bash
+cd backend && php artisan migrate
+```
+
+5. Start development servers:
+```bash
 npm run dev
 ```
 
-### Backend Development
-```bash
-cd backend
-php artisan serve
-```
+## Features
 
-### Running Tests
-```bash
-# Frontend tests
-npm test
+- Multi-tenant architecture
+- Accounting module
+- HR module (coming soon)
+- CRM module (coming soon)
+- Subscription management
 
-# Backend tests
-php artisan test
-```
+## Technology Stack
 
-### Building for Production
-```bash
-# Frontend
-npm run build
+- **Frontend**: React, TypeScript, Tailwind CSS, Vite
+- **Backend**: Laravel, PHP
+- **Database**: MySQL/PostgreSQL
+- **Authentication**: Laravel Sanctum
 
-# Backend
-composer install --optimize-autoloader --no-dev
-php artisan optimize
-```
+## License
 
-## 📦 Tech Stack
-
-### Frontend
-- **Framework:** Next.js 13+
-- **Styling:** Tailwind CSS 3.3+
-- **State Management:** React Context API
-- **Animation:** Framer Motion
-- **Form Handling:** React Hook Form
-- **Internationalization:** next-i18next
-
-### Backend
-- **Framework:** Laravel 12
-- **API:** RESTful
-- **Authentication:** Laravel Sanctum
-- **Admin Panel:** Nova / Filament
-- **Caching:** Redis
-- **Search:** Laravel Scout with Meilisearch
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 📞 Contact
-
-For any inquiries, please contact us at [contact@duxelite.com](mailto:contact@duxelite.com)
-
----
-
-<div align="center">
-  Made with ❤️ by Duxelite Team
-</div>
+[MIT](LICENSE)
