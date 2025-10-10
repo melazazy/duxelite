@@ -116,9 +116,9 @@ const CaseStudy: React.FC = () => {
           </div>
 
           {/* Project Details */}
-          <div className="max-w-4xl mx-auto grid md:grid-cols-3 gap-12 mt-16">
+          <div className="max-w-4xl mx-auto flex flex-wrap justify-between gap-12 mt-16">
             {/* Main Content */}
-            <div className="md:col-span-2 space-y-12">
+            <div className="w-full md:w-[calc(66.666%_-_24px)] space-y-12">
               {/* Challenge & Solution */}
               <div className="space-y-8">
                 <div>
@@ -140,9 +140,9 @@ const CaseStudy: React.FC = () => {
               {caseStudy.results && caseStudy.results.length > 0 && (
                 <div>
                   <h2 className="text-2xl font-bold text-white mb-6">Results</h2>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="flex flex-wrap gap-6">
                     {caseStudy.results.map((result, index) => (
-                      <div key={index} className="bg-white/5 p-6 rounded-xl">
+                      <div key={index} className="bg-white/5 p-6 rounded-xl flex-1 min-w-[200px]">
                         <h3 className="text-2xl font-bold text-white mb-2">{result.metric}</h3>
                         <p className="text-gray-300">{result.description}</p>
                       </div>
@@ -153,7 +153,7 @@ const CaseStudy: React.FC = () => {
             </div>
 
             {/* Sidebar */}
-            <div className="space-y-8">
+            <div className="w-full md:w-[calc(33.333%_-_24px)] space-y-8">
               {/* Project Info */}
               <div className="bg-white/5 p-6 rounded-xl">
                 <h3 className="text-lg font-semibold text-white mb-4">Project Details</h3>
