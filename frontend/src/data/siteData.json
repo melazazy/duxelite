@@ -131,7 +131,7 @@
         },
         {
           "text": "View Our Work",
-          "path": "/portfolio",
+          "path": "/projects",
           "variant": "secondary",
           "icon": "eye"
         }

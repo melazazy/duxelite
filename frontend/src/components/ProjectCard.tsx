@@ -26,7 +26,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ slug, image, name, descriptio
         <p className="text-gray-600 mb-6 flex-grow">{description}</p>
         <div className="flex flex-col sm:flex-row gap-3 mt-auto">
           <Link 
-            to={`/portfolio/${slug}`}
+            to={`/projects/${slug}`}
             className="inline-flex items-center justify-center font-semibold text-[#0A2540] hover:text-[#00CFFF] transition-colors duration-300 border border-[#00CFFF] rounded-lg px-4 py-2 hover:bg-[#00CFFF]/10"
           >
             View Project

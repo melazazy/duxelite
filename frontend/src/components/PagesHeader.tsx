@@ -31,14 +31,14 @@ const PagesHeader: React.FC = () => {
     { path: '/', label: 'Home' },
     { path: '/about', label: 'About Us' },
     { path: '/services', label: 'Services' },
-    { path: '/portfolio', label: 'Portfolio' },
+    { path: '/projects', label: 'Projects' },
     { path: '/blog', label: 'Blog' },
     { path: '/contact', label: 'Contact' },
   ];
 
   return (
     <header 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed w-full z-50 ${
         isScrolled 
           ? 'bg-white/95 backdrop-blur-sm shadow-lg' 
           : 'bg-white/80 backdrop-blur-sm'

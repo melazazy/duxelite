@@ -13,11 +13,11 @@ use App\Http\Controllers\Api\ContactController;
 use Illuminate\Support\Facades\Route;
 
 // Public routes
-Route::get('/portfolio', [PortfolioController::class, 'index']);
-Route::get('/portfolio/featured', [PortfolioController::class, 'featured']);
-Route::get('/portfolio/homepage', [PortfolioController::class, 'homePageData']);
-Route::get('/portfolio/category/{categorySlug}', [PortfolioController::class, 'byCategory']);
-Route::get('/portfolio/{slug}', [PortfolioController::class, 'show']);
+Route::get('/projects', [PortfolioController::class, 'index']);
+Route::get('/projects/featured', [PortfolioController::class, 'featured']);
+Route::get('/projects/homepage', [PortfolioController::class, 'homePageData']);
+Route::get('/projects/category/{categorySlug}', [PortfolioController::class, 'byCategory']);
+Route::get('/projects/{slug}', [PortfolioController::class, 'show']);
 
 // Add specific routes for frontend API calls
 Route::get('/blog/posts', [BlogController::class, 'index']);

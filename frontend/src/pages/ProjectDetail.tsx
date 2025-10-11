@@ -191,7 +191,7 @@ const ProjectNavigation = memo(({ slug }: { slug: string }) => (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="flex justify-between">
         <Link
-          to="/portfolio"
+          to="/projects"
           className="inline-flex items-center text-white/80 hover:text-white transition-colors"
         >
           <ArrowLeft className="mr-2" size={18} />
@@ -248,7 +248,7 @@ const ProjectDetail: React.FC = () => {
           The project you're looking for doesn't exist or has been moved.
         </p>
         <Link
-          to="/portfolio"
+          to="/projects"
           className="bg-[#00CFFF] hover:bg-[#00B8E6] text-[#0A2540] font-semibold py-3 px-6 rounded-lg transition-colors duration-300 inline-flex items-center"
         >
           <ArrowLeft className="mr-2" size={18} />

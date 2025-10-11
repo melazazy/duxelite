@@ -7,7 +7,7 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
  */
 export const fetchProjects = async (): Promise<ProjectDetail[]> => {
   try {
-    const response = await fetch(`${API_BASE_URL}/portfolio`);
+    const response = await fetch(`${API_BASE_URL}/projects`);
     
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
@@ -57,7 +57,7 @@ export const fetchProjects = async (): Promise<ProjectDetail[]> => {
  */
 export const fetchProjectBySlug = async (slug: string): Promise<ProjectDetail> => {
   try {
-    const response = await fetch(`${API_BASE_URL}/portfolio/${slug}`);
+    const response = await fetch(`${API_BASE_URL}/projects/${slug}`);
     
     if (!response.ok) {
       if (response.status === 404) {

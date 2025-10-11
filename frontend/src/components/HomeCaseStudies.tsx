@@ -217,7 +217,7 @@ const HomeCaseStudies: React.FC<HomeCaseStudiesProps> = ({
           </div>
           <div className="text-center mt-16">
             <Link
-              to="/portfolio"
+              to="/projects"
               className="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-full text-white bg-gradient-to-r from-[#00CFFF] to-[#00B2E2] hover:from-[#00B2E2] hover:to-[#00CFFF] transition-all duration-300 shadow-lg"
             >
               View All Case Studies

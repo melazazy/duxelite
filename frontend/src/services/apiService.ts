@@ -106,7 +106,7 @@ class ApiService {
   }
 
   async getPortfolioHomePageData(): Promise<PortfolioProject[]> {
-    const response = await this.get<{ success: boolean; data: PortfolioProject[] }>('/portfolio/homepage');
+    const response = await this.get<{ success: boolean; data: PortfolioProject[] }>('/projects/homepage');
     return response.data;
   }
 

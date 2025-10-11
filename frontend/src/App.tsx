@@ -13,7 +13,7 @@ import NotFound from './pages/NotFound';
 const Home = lazy(() => import('./pages/Home'));
 const AboutUs = lazy(() => import('./pages/AboutUs'));
 const Services = lazy(() => import('./pages/Services'));
-const Portfolio = lazy(() => import('./pages/Portfolio'));
+const Projects = lazy(() => import('./pages/Projects'));
 const ProjectDetail = lazy(() => import('./pages/ProjectDetail'));
 const CaseStudy = lazy(() => import('./pages/CaseStudy'));
 const CaseStudies = lazy(() => import('./components/CaseStudies'));
@@ -63,8 +63,8 @@ function AppContent() {
       '/', 
       '/about', 
       '/services', 
-      '/portfolio', 
-      '/portfolio/:slug',
+      '/projects', 
+      '/projects/:slug',
       '/case-studies', 
       '/case-studies/:slug',
       '/blog', 
@@ -132,8 +132,8 @@ function AppContent() {
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<AboutUs />} />
               <Route path="/services" element={<Services />} />
-              <Route path="/portfolio" element={<Portfolio />} />
-              <Route path="/portfolio/:slug" element={<ProjectDetail />} />
+              <Route path="/projects" element={<Projects />} />
+              <Route path="/projects/:slug" element={<ProjectDetail />} />
               <Route path="/case-studies" element={<CaseStudies />} />
               <Route path="/case-studies/:slug" element={<CaseStudy />} />
               <Route path="/blog" element={<Blog />} />
