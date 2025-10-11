@@ -7,13 +7,11 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
-        manualChunks: (id) => {
-          if (id.includes('node_modules')) {
-            if (id.includes('lucide-react')) return 'vendor-lucide';
-            if (id.includes('react') || id.includes('react-dom')) return 'vendor-react';
-            if (id.includes('@hookform') || id.includes('yup')) return 'vendor-forms';
-            return 'vendor';
-          }
+        manualChunks: {
+          'vendor-react': ['react', 'react-dom'],
+          'vendor-router': ['react-router-dom'],
+          'vendor-forms': ['react-hook-form', '@hookform/resolvers', 'yup'],
+          'vendor-ui': ['framer-motion', 'lucide-react'],
         },
         chunkFileNames: 'assets/[name]-[hash].js',
         entryFileNames: 'assets/[name]-[hash].js',

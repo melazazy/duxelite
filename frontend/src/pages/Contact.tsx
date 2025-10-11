@@ -107,7 +107,7 @@ const Contact: React.FC = () => {
     });
     
       // Use the Vite environment variable with a fallback
-      const apiUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000/api';
+      const apiUrl = import.meta.env.VITE_API_BASE_URL;
       
       const response = await fetch(`${apiUrl}/contact`, {
         method: 'POST',

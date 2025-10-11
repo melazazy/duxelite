@@ -22,6 +22,7 @@ return new class extends Migration
             $table->text('challenge')->nullable();
             $table->text('solution')->nullable();
             $table->text('results')->nullable();
+            $table->string('industry')->nullable();
             $table->boolean('is_featured')->default(false);
             $table->timestamp('published_at')->nullable();
             $table->timestamps();

@@ -14,7 +14,7 @@
     "build": "cd frontend && npm run build",
     "lint:frontend": "cd frontend && npm run lint",
     "format:frontend": "cd frontend && npm run format",
-    "prepare": "husky install",
+    "prepare": "npx husky install",
     "test": "cd frontend && npm test && cd ../backend && php artisan test"
   },
   "devDependencies": {

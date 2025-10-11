@@ -49,6 +49,7 @@ class TestDatabaseSeeder extends Seeder
         if (class_exists(CaseStudy::class)) {
             CaseStudy::factory(4)->create([
                 'project_id' => fn() => Project::inRandomOrder()->first()->id,
+                'industry' => 'Information Technology',
             ]);
         }
 
