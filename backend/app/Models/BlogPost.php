@@ -135,13 +135,17 @@ class BlogPost extends Model
                 'name' => $this->author->name,
                 'email' => $this->author->email
             ] : null,
-            'tags' => $this->tags->map(function ($tag) {
-                return [
-                    'id' => $tag->id,
-                    'name' => $tag->name,
-                    'slug' => $tag->slug
-                ];
-            })
+            'tags' => $this->tags ? 
+                (is_string($this->tags) 
+                    ? (json_decode($this->tags, true) ?: []) 
+                    : $this->tags->map(function ($tag) {
+                        return [
+                            'id' => $tag->id,
+                            'name' => $tag->name,
+                            'slug' => $tag->slug
+                        ];
+                    })->toArray()
+                ) : []
         ];
     }
 }
