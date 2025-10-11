@@ -9,24 +9,25 @@
     <meta name="author" content="Duxelite Digital Solutions" />
     
     <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=%VITE_GA_MEASUREMENT_ID%"></script>
     <script>
-      // Define the gtag function
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       
-      // Disable automatic pageview tracking as we'll handle it manually
-      gtag('config', '%VITE_GA_TRACKING_ID%', { 'send_page_view': false });
-      
-      // Add performance monitoring
-      gtag('config', '%VITE_GA_TRACKING_ID%', {
+      // Google Analytics configuration
+      gtag('config', '%VITE_GA_MEASUREMENT_ID%', {
         'page_title': document.title,
         'page_path': window.location.pathname,
         'anonymize_ip': true,
         'allow_google_signals': false,
-        'allow_ad_personalization_signals': false
+        'allow_ad_personalization_signals': false,
+        'send_page_view': true
       });
     </script>
+    
+    <!-- Google Search Console Verification -->
+    <meta name="google-site-verification" content="%VITE_GOOGLE_SITE_VERIFICATION%" />
     
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Duxelite - Digital Solutions & Web Development" />

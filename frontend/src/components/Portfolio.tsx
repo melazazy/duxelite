@@ -237,22 +237,20 @@ const Portfolio: React.FC = () => {
                   <div className="mb-3">
                     <div className="flex flex-wrap gap-2">
                       {project.technologies.slice(0, 2).map((tech, index) => (
-                        <Link 
+                        <span
                           key={`${project.id}-tech-${index}`}
-                          to={`/portfolio/${project.slug}`} 
                           className="inline-flex items-center px-4 py-2 bg-white/10 hover:bg-white/20 text-white rounded-lg transition-colors duration-300 text-sm font-medium"
                         >
                           {tech}
-                        </Link>
+                        </span>
                       ))}
                       {project.technologies.length > 2 && (
-                        <Link 
+                        <span 
                           key={`${project.id}-more`}
-                          to={`/portfolio/${project.slug}`} 
                           className="inline-flex items-center px-4 py-2 bg-white/10 hover:bg-white/20 text-white rounded-lg transition-colors duration-300 text-sm font-medium"
                         >
                           +{project.technologies.length - 2}
-                        </Link>
+                        </span>
                       )}
                     </div>
                   </div>

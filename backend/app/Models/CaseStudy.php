@@ -20,6 +20,7 @@ class CaseStudy extends Model
         'challenge',
         'solution',
         'results',
+        'image',
         'is_featured',
         'published_at',
     ];

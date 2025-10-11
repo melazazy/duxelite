@@ -101,7 +101,8 @@ class ApiService {
   // Portfolio methods
   async getPortfolioProjects(category?: string): Promise<PortfolioProject[]> {
     const queryString = category ? `?category=${category}` : '';
-    return this.get(`/projects${queryString}`);
+    const response = await this.get<{ success: boolean; data: PortfolioProject[] }>(`/projects${queryString}`);
+    return response.data || [];
   }
 
   async getPortfolioHomePageData(): Promise<PortfolioProject[]> {
@@ -125,7 +126,13 @@ class ApiService {
 
   // Case studies methods
   async getCaseStudies(): Promise<CaseStudy[]> {
-    return this.get('/case-studies');
+    const response = await this.get<{ success: boolean; data: CaseStudy[] }>('/case-studies');
+    return response.data;
+  }
+
+  async getCaseStudy(slug: string): Promise<CaseStudy> {
+    const response = await this.get<{ success: boolean; data: CaseStudy }>(`/case-studies/${slug}`);
+    return response.data;
   }
 
   async getCaseStudiesHomePageData(): Promise<CaseStudy[]> {

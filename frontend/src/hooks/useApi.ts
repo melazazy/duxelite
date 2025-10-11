@@ -16,9 +16,9 @@ export function useApi<T>(
     try {
       setLoading(true);
       setError(null);
-      console.log('Fetching data...');
+      // console.log('Fetching data...');
       const result = await apiCall();
-      console.log('API Response:', result);
+      // console.log('API Response:', result);
       setData(result);
       return result;
     } catch (err: any) {
