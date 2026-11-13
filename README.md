@@ -1,246 +1,91 @@
-# Duxelite Corporate Website
+# Duxelite — Corporate Website
 
-A modern corporate website and digital presence platform for Duxelite, showcasing web development services, portfolio, and expertise in the MENA region.
+**Duxelite** is a digital platform that showcases the company's services, success stories, and expertise to businesses across the MENA region. It is the central hub for attracting new clients, sharing knowledge, and making it easy for people to get in touch.
 
-## Project Overview
+> 📚 **Developers:** See the [`docs/`](./docs/) folder for technical guides, API references, frontend hooks, and service documentation.
 
-**Target Audience:** Businesses seeking web development, ERP systems, SaaS platforms, and e-learning solutions
+---
 
-**Core Services:**
-- Web Development
-- ERP Systems
-- SaaS Solutions
-- E-learning Platforms
+## What This Platform Does
 
-**Key Features:**
-- Modern responsive design
-- Portfolio showcase
-- Blog system
-- Contact management
-- Admin dashboard
-- SEO optimization
-- Multi-language support (Arabic/English)
+The Duxelite website is built to do four things really well:
 
-## Technical Architecture
+### 🏆 Show Real Results — Case Studies
+Potential clients want proof, not promises. The platform features in-depth **case studies** that tell the story of how Duxelite helped real businesses solve real problems — with measurable outcomes like cost savings, efficiency gains, and growth numbers.
 
-This project uses a modern full-stack architecture:
+### 📝 Share Knowledge — Blog
+The blog helps Duxelite stay visible and credible online. Articles are written to rank on search engines and position the team as trusted experts in web development, ERP systems, SaaS, and e-learning. New content can be published and managed without touching any code.
 
-- **Frontend:** React/TypeScript with Vite, Tailwind CSS, Framer Motion
-- **Backend:** Laravel 12 with Filament admin panel
-- **Database:** MySQL with Redis caching
-- **Authentication:** Laravel Sanctum
-- **Development:** Docker support, GitHub Actions CI/CD
+### 📬 Capture Interest — Contact Forms
+Every page on the site gives visitors a simple, low-friction way to reach out. Whether someone has a quick question or is ready to discuss a project, the contact forms make sure no lead is missed. Submissions are stored and can trigger automated follow-up emails.
 
-## Getting Started
+### 📊 Understand Visitors — Analytics
+The platform tracks how visitors find the site, which pages they read, and where they drop off. This data helps the team make smarter decisions about content, marketing, and where to focus next.
 
-### Prerequisites
+---
 
-- Node.js 18+
-- PHP 8.2+
-- Composer
-- MySQL 8.0+
-- Docker (optional, for containerized development)
+## Core Website Sections
 
-### Installation
+| Section | What it's for |
+|---|---|
+| **Home** | First impression — headlines, services at a glance, featured work |
+| **About Us** | The company story, the team, and what Duxelite stands for |
+| **Services** | Clear descriptions of Web Development, ERP, SaaS, and E-learning offerings |
+| **Portfolio** | A gallery of completed projects with details on technologies and outcomes |
+| **Case Studies** | Deep-dive success stories showing business impact for past clients |
+| **Blog** | Expert articles and industry insights, fully searchable and filterable |
+| **Contact** | Multiple ways to get in touch — form, email, phone, and map |
 
-1. Navigate to the project directory:
-```bash
-cd /path/to/duxone
-```
+---
 
-2. Install PHP dependencies:
-```bash
-cd backend && composer install
-```
+## Key Capabilities
 
-3. Install Node.js dependencies:
-```bash
-cd frontend && npm install
-```
+- **Works on any device** — The site looks great on phones, tablets, and desktops automatically.
+- **Fast and search-friendly** — Pages load quickly and are structured so search engines like Google can find and rank them.
+- **Supports Arabic and English** — Content can be managed and displayed in both languages.
+- **Admin dashboard included** — The team can update content, manage blog posts, review contact submissions, and publish case studies — all from a simple web panel, no coding needed.
+- **Secure by design** — The platform is built with industry-standard protections against spam, unauthorized access, and data tampering.
 
-4. Set up environment variables:
-```bash
-# Copy and configure environment files
-cp backend/.env.example backend/.env
-cp frontend/.env.example frontend/.env
-
-# Configure your database settings in backend/.env
-```
-
-5. Generate application key:
-```bash
-cd backend && php artisan key:generate
-```
-
-6. Run database migrations:
-```bash
-cd backend && php artisan migrate
-```
-
-7. Start development servers:
-```bash
-# Option 1: Using npm scripts (recommended)
-npm run dev
-
-# Option 2: Using Laravel Sail (if Docker is available)
-cd backend && ./vendor/bin/sail up
-```
-
-### Development URLs
-- **Frontend:** http://localhost:5173
-- **Backend API:** http://localhost:8000
-- **Admin Panel:** http://localhost:8000/admin
-
-## Core Features
-
-### Website Sections
-- **Homepage** - Hero section, services overview, portfolio highlights
-- **About Us** - Company story, team showcase, mission and values
-- **Services** - Web development, ERP systems, SaaS solutions, e-learning platforms
-- **Portfolio** - Project gallery, detailed case studies, client success metrics
-- **Blog** - SEO-optimized articles, content management system
-- **Contact** - Contact forms, Google Maps integration, direct communication channels
-
-### Technical Features
-- **Responsive Design** - Mobile-first approach with Tailwind CSS
-- **Performance Optimized** - Fast loading, SEO-friendly, Core Web Vitals compliant
-- **Admin Dashboard** - Content management via Filament admin panel
-- **Multi-language Support** - Arabic and English language switching
-- **SEO Ready** - Meta tags, structured data, sitemap generation
-- **Security** - CSRF protection, XSS prevention, secure authentication
-- **API Integration** - RESTful API for frontend-backend communication
-
-## Technology Stack
-
-### Frontend
-- **Framework:** React 18 with TypeScript
-- **Build Tool:** Vite 5.4
-- **Styling:** Tailwind CSS 3.4
-- **Animation:** Framer Motion 12.23
-- **Forms:** React Hook Form with Yup validation
-- **HTTP Client:** Axios
-- **Icons:** Lucide React
-- **State Management:** React Context API
-
-### Backend
-- **Framework:** Laravel 12
-- **PHP Version:** 8.2+
-- **Database:** MySQL 8.0+
-- **ORM:** Eloquent
-- **Authentication:** Laravel Sanctum
-- **Admin Panel:** Filament 3.2
-- **Caching:** Redis
-- **Queue System:** Laravel Horizon
-- **API Documentation:** Laravel Swagger (l5-swagger)
-
-### Development & DevOps
-- **Version Control:** Git with GitHub
-- **Package Managers:** Composer (PHP), npm (Node.js)
-- **Code Quality:** ESLint, Prettier, PHP CS Fixer
-- **Containerization:** Docker with Laravel Sail
-- **CI/CD:** GitHub Actions
-- **Testing:** PHPUnit, Pest
-- **Monitoring:** Laravel Telescope
+---
 
 ## Project Roadmap
 
-### Phase 1 (Current - Foundation)
-- ✅ Core website structure and design system
-- ✅ Basic portfolio showcase
-- ✅ Contact forms and lead generation
-- 🔄 Blog system implementation
-- 🔄 Admin dashboard setup
+### ✅ Phase 1 — Foundation (Complete)
+- Core website structure and visual design
+- Portfolio showcase with project details
+- Contact forms and lead capture
 
-### Phase 2 (Next - Enhancement)
-- ⏳ Advanced case studies and project details
-- ⏳ Client portal for project management
-- ⏳ Resource library and downloads
-- ⏳ Webinars and events management
-- ⏳ Performance optimization and SEO improvements
+### 🔄 Phase 2 — Enhancement (In Progress)
+- Full blog system with categories and search
+- Admin dashboard for content management
+- Advanced case studies and client success metrics
 
-### Phase 3 (Future - Expansion)
-- ⏳ Multi-language support (Arabic/English)
-- ⏳ Advanced analytics and tracking
-- ⏳ Marketing automation integration
-- ⏳ CRM system integration
-- ⏳ Mobile application development
+### ⏳ Phase 3 — Expansion (Planned)
+- Client self-service portal
+- Resource library and downloadable guides
+- Webinars and events management
+- CRM and marketing automation integrations
+- Mobile application
 
-## Development Workflow
+---
 
-### Branching Strategy
-- `main` - Production-ready code
-- `dev` - Integration branch for testing
-- `feature/*` - New features and enhancements
-- `bugfix/*` - Bug fixes and patches
-- `hotfix/*` - Critical production fixes
+## Documentation
 
-### Code Quality Standards
-- **Frontend:** ESLint, Prettier, TypeScript strict mode
-- **Backend:** PHP CS Fixer, PSR standards compliance
-- **Testing:** Minimum 80% code coverage
-- **Commits:** Conventional commit messages
-- **Pull Requests:** Require review and testing
+All technical documentation lives in the [`docs/`](./docs/) folder:
 
-## Contributing
+| Guide | Description |
+|---|---|
+| [Getting Started](./docs/getting-started.md) | How to set up and run the project locally |
+| [Architecture Overview](./docs/architecture.md) | Tech stack, folder structure, and system design |
+| [API Reference](./docs/api-reference.md) | All backend REST API endpoints with parameters and responses |
+| [Frontend Hooks & Services](./docs/frontend-hooks-services.md) | React hooks, service classes, and utility functions |
+| [Development Workflow](./docs/development-workflow.md) | Branching, code quality standards, and contribution guidelines |
 
-We welcome contributions to improve the Duxelite Corporate Website! Here's how you can help:
-
-1. **Fork the repository**
-2. **Create a feature branch** (`git checkout -b feature/amazing-feature`)
-3. **Make your changes** following our coding standards
-4. **Add tests** for new functionality
-5. **Commit your changes** (`git commit -m 'Add some amazing feature'`)
-6. **Push to the branch** (`git push origin feature/amazing-feature`)
-7. **Open a Pull Request**
-
-### Development Guidelines
-- Follow the established code style and conventions
-- Write clear, concise commit messages
-- Add appropriate tests for new features
-- Update documentation for any API changes
-- Ensure all tests pass before submitting PR
-
-## Support & Documentation
-
-### Local Development Setup
-```bash
-# Install all dependencies
-npm install && cd backend && composer install
-
-# Set up environment
-cp backend/.env.example backend/.env
-cp frontend/.env.example frontend/.env
-
-# Run migrations and seeders
-cd backend && php artisan migrate && php artisan db:seed
-
-# Start development servers
-npm run dev
-```
-
-### Useful Commands
-```bash
-# Frontend commands
-cd frontend && npm run dev      # Start dev server
-cd frontend && npm run build    # Build for production
-cd frontend && npm run lint     # Run linting
-
-# Backend commands
-cd backend && php artisan serve           # Start Laravel server
-cd backend && php artisan queue:work      # Process queues
-cd backend && php artisan test            # Run tests
-cd backend && php artisan migrate:fresh   # Reset database
-```
-
-## License
-
-This project is proprietary software developed exclusively for Duxelite.
-
-© 2025 Duxelite. All rights reserved.
+---
 
 ## Contact & Support
 
-For technical support, feature requests, or business inquiries:
+For business inquiries, feature requests, or technical support:
 
 - **Email:** [support@duxelite.net]
 - **LinkedIn:** [Duxelite LinkedIn Page]
@@ -248,6 +93,12 @@ For technical support, feature requests, or business inquiries:
 
 ---
 
-**Built with ❤️ by the Duxelite Development Team**
+## License
 
-*Duxelite - Empowering businesses through innovative web solutions*
+This project is proprietary software developed exclusively for Duxelite.
+
+© 2025 Duxelite. All rights reserved.
+
+---
+
+*Built with ❤️ by the Duxelite Development Team — Empowering businesses through innovative web solutions*

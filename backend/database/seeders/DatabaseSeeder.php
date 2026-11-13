@@ -48,6 +48,10 @@ class DatabaseSeeder extends Seeder
             
             // Blog posts (depends on categories and tags)
             BlogPostSeeder::class,
+            
+            // Case Studies (depends on projects)
+            CaseStudySeeder::class,
+            AdditionalCaseStudiesSeeder::class,
         ]);
     }
 }
